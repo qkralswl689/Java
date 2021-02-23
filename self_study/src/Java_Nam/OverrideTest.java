@@ -1,6 +1,6 @@
 package Java_Nam;
 
-class Point { // 클래스 생성
+class Point2 { // 클래스 생성
 	int x;
 	int y;
 	
@@ -10,7 +10,7 @@ class Point { // 클래스 생성
 	}
 }
 
-class Point3D extends Point{ // 위 클래스 상속받는 클래스 생성
+class Point3D extends Point2{ // 위 클래스 상속받는 클래스 생성
 	int z;
 
 	// 조상의 getLocation()을 오버라이딩 
