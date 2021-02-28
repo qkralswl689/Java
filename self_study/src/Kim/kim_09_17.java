@@ -27,6 +27,24 @@ public class kim_09_17 {
 		6*9=54 7*9=63 8*9=72 9*9=81
 		 */		
 
+		for(int i=2; i<6;i++) {
+			System.out.print(i + "단        ");
+			// System.out.print(i + "단\t"); => 간단하게 공백 넣을수 있다
+		}System.out.println();
+		for(int i=2;i<=9;i++) {
+			for(int j=2;j<=5;j++) {
+				System.out.printf("%d*%d=%d ",j,i,j*i);
+			}System.out.println();
+		}
+		for(int i=6; i<=9;i++) {
+			System.out.print(i + "단       ");
+		}System.out.println();
+		for(int i=2;i<=9;i++) {
+			for(int j=6;j<=9;j++) {
+				System.out.printf("%d*%d=%d ",j,i,j*i);
+			}System.out.println();
+		}
+		
 		/*2. 방정식 2x+4y=10의 모든 해를 구하는 프로그램을 작성하시오.		
 		단 x와 y는 정수이고 각각의 범위는 0<=x<=10, 0<=y<=10임 	
 		** 방정식의 해 : 방정식이 참이 되게 하는 미지수의 값.
