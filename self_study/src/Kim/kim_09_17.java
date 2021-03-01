@@ -27,23 +27,23 @@ public class kim_09_17 {
 		6*9=54 7*9=63 8*9=72 9*9=81
 		 */		
 
-		for(int i=2; i<6;i++) {
-			System.out.print(i + "단        ");
-			// System.out.print(i + "단\t"); => 간단하게 공백 넣을수 있다
-		}System.out.println();
-		for(int i=2;i<=9;i++) {
-			for(int j=2;j<=5;j++) {
-				System.out.printf("%d*%d=%d ",j,i,j*i);
-			}System.out.println();
-		}
-		for(int i=6; i<=9;i++) {
-			System.out.print(i + "단       ");
-		}System.out.println();
-		for(int i=2;i<=9;i++) {
-			for(int j=6;j<=9;j++) {
-				System.out.printf("%d*%d=%d ",j,i,j*i);
-			}System.out.println();
-		}
+//		for(int i=2; i<6;i++) {
+//			System.out.print(i + "단        ");
+//			// System.out.print(i + "단\t"); => 간단하게 공백 넣을수 있다
+//		}System.out.println();
+//		for(int i=2;i<=9;i++) {
+//			for(int j=2;j<=5;j++) {
+//				System.out.printf("%d*%d=%d ",j,i,j*i);
+//			}System.out.println();
+//		}
+//		for(int i=6; i<=9;i++) {
+//			System.out.print(i + "단       ");
+//		}System.out.println();
+//		for(int i=2;i<=9;i++) {
+//			for(int j=6;j<=9;j++) {
+//				System.out.printf("%d*%d=%d ",j,i,j*i);
+//			}System.out.println();
+//		}
 		
 		/*2. 방정식 2x+4y=10의 모든 해를 구하는 프로그램을 작성하시오.		
 		단 x와 y는 정수이고 각각의 범위는 0<=x<=10, 0<=y<=10임 	
@@ -53,14 +53,30 @@ public class kim_09_17 {
 		x=3,y=1		
 		x=5,y=0*/	
 
+//		for(int x=0; x<=10;x++) {
+//			for(int y=0; y<=10;y++) {
+//				if(2*x + 4*y == 10) {
+//					System.out.printf("x = %d, y = %d %n",x,y);
+//				}
+//			}
+//		}
 
 			
 		/*
 		  3. (1) + (1+2) + (1+2+3)+... (1+2+3+...10)=220 출력하기
 		*/
-
-
-
+		
+//		for(int i=1;i<=1;i++) {
+//			System.out.printf("(%d) + ",i);
+//		}
+//		
+//		for(int i=1;i<=10;i++) {
+//			System.out.printf("(%d + ",i);
+//			for(int j=i;j<=10;j++) {
+//				System.out.printf("%d)",j);
+//				}System.out.println();		
+//		}
+//	
 		
 		/* 4. 화면에 삼각형 높이를 입력받고, 높이에 맞는 *로 삼각형 출력하기	
 		[결과]		
@@ -72,13 +88,30 @@ public class kim_09_17 {
 		
 		Scanner sc = new Scanner(System.in);
 		
-
+//		int n = sc.nextInt();
+//		for(int i=0; i<=n;i++) {
+//			for(int j=n;j>i;j--) {
+//				System.out.print(" ");
+//			}for(int j=0;j<i;j++) {
+//				System.out.print("*");
+//			}System.out.println();
+//		}
 		/* 5.화면에 삼각형 높이를 입력받고, 높이에 맞는 *로 삼각형 출력하기 		
 		삼각형의 높이를 입력하세요		
 		3	
 		  * 		
 		 *** 		
 		*****  */
+//		
+//		int n = sc.nextInt();
+//		
+//		for(int i=1;i<=n;i++) {
+//			for(int j=n;j>i;j--) {
+//				System.out.print(" ");
+//			}for(int j=1;j<i*2;j++) {
+//				System.out.print("*");
+//			}System.out.println();
+//		}
 	
 
 		/*6. 화면에 삼각형 높이를 입력받고, 높이에 맞는 *로 삼각형 출력하기 		
@@ -90,6 +123,16 @@ public class kim_09_17 {
 		 ***		
 		*****  ​*/
 		
+		int n = sc.nextInt();
+		
+		for(int i=0; i<=n;i++) {
+			for(int j=0;j<i;j++) {
+				System.out.print("+");
+				
+			}for(int j=n;j>i*2;j--) {
+				System.out.print("*");
+			}System.out.println();
+		}
 	
 	}
 }
