@@ -66,17 +66,10 @@ public class kim_09_17 {
 		  3. (1) + (1+2) + (1+2+3)+... (1+2+3+...10)=220 출력하기
 		*/
 		
-//		for(int i=1;i<=1;i++) {
-//			System.out.printf("(%d) + ",i);
-//		}
-//		
-//		for(int i=1;i<=10;i++) {
-//			System.out.printf("(%d + ",i);
-//			for(int j=i;j<=10;j++) {
-//				System.out.printf("%d)",j);
-//				}System.out.println();		
-//		}
-//	
+
+		
+		
+	
 		
 		/* 4. 화면에 삼각형 높이를 입력받고, 높이에 맞는 *로 삼각형 출력하기	
 		[결과]		
@@ -125,14 +118,22 @@ public class kim_09_17 {
 		
 		int n = sc.nextInt();
 		
-		for(int i=0; i<=n;i++) {
+		for(int i=0; i<=n/2;i++) {
 			for(int j=0;j<i;j++) {
-				System.out.print("+");
+				System.out.print(" ");				
 				
-			}for(int j=n;j>i*2;j--) {
+			}for(int j=n;j>i*2; j--) {
 				System.out.print("*");
+			}System.out.println();	
+		
+		}for (int i=1;i<=n/2;i++) {
+			for(int j=1; j<i;j++) {
+				System.out.print("+");
+//			}for(int j=1;j<=i*2;j++) {
+//				System.out.print(j);
 			}System.out.println();
-		}
-	
+		  }
+		
+
 	}
 }
