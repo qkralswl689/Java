@@ -69,8 +69,8 @@ public interface DemIinterface {
 		System.out.println("정적 멤버 메서드");
 	}
 	
-	 main Mtehod (o)
-	public static void main(String[] args) {
+	 //main Mtehod (o)
+	public static void main1(String[] args) {
 	System.out.println("인터페이스 실행");
 	
 //	// DemoInterface obj = new DemoInterface(); // (X)

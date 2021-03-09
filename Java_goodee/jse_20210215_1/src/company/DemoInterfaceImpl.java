@@ -1,6 +1,6 @@
 package company;
 
-public class DemoInterfaceImpl implements DemIinterface {
+public abstract class DemoInterfaceImpl implements DemIinterface {
 
 	@Override
 	public void order() {
@@ -18,6 +18,7 @@ public class DemoInterfaceImpl implements DemIinterface {
 		System.out.println("구현 클래스의 defaultMethod");
 	}
 
+	
 	
 
 }
