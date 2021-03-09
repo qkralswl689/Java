@@ -1,6 +1,9 @@
 package sec07.exam03_chatting;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -135,25 +138,126 @@ public class ServerExample extends Application {
 			if(executorService != null && !executorService.isShutdown()) {
 				executorService.shutdown();
 			}
+			// 로그 쿨력
 			Platform.runLater(()->{
-				displayTest("[서버 멈춤]");
-				btnStartStop.se
-				});
+				displayText("[서버 멈춤]");
+				btnStartStop.setText("start"); // 버튼 start로 변경
+			});
+			
 		} catch (Exception e) {} // 예외처리 내용 없어서 내용작성 X
 					
-		}
-		
 	}	
 	
 	class Client { // 데이터 통신코드
 		// 필드 선언
 		Socket socket;
 		
-		// 생성자 생성
+		// 생성자 생성 => socket 매개값으로 받아 socket에 대입
 		Client(Socket socket){
 			this.socket = socket;
+			receive(); // 클라이언트 객체를 생성할 때 항상 메소드 호출
+		}
+		
+		// 클라이언트가 보낸 데이터 받는 메소드
+		void receive() {
+			// 스레드 풀(executorService) 안에 있는 스레드가 receive 메소드를 실행 할 수 있도록
+			Runnable runnable = new Runnable() {
+
+				@Override
+				public void run() {
+					try {
+					// 클라이언트가 보낸 데이터를 받을 코드
+					while(true) {
+						byte[] byteArr = new byte[100];
+						InputStream inputStream = socket.getInputStream();
+						
+						// inputStream 을 통해 클라이언트가 보낸 데이터 받기
+						int readByteCount = inputStream.read(byteArr);
+						
+						if(readByteCount == -1) { // 클라이언트가 정상적으로 종료를 했다면
+							throw new IOException(); // 강제적으로 IO예외를 발생
+						}
+						
+						// 로그 출력내용
+						String message = "[요청 처리 : " + socket.getRemoteSocketAddress() + ": " 
+									+ Thread.currentThread().getName() + "]";
+						// 로그 출력
+						Platform.runLater(()-> displayText(message));
+						
+						// 읽은 바이트 문자열로 변환
+						String data = new String(byteArr,0,readByteCount,"UTF-8");
+						
+						// 받은 데이터를 모든 클라이언트에게 전달
+						// for : 모든 클라이언트를 리스트에서 얻어서 send메소드를 호출해서 데이터를 클라이언트로 보낸다
+						for(Client client : connections) {
+							client.send(data);
+							
+						}
+					}
+					
+					
+					}catch(Exception e) {
+						try {
+						// 해당 클라이언트를 리스트에서 삭제
+							connections.remove(Client.this);
+							
+							// 출력 로그 생성
+							String message = "[클라이언트 통신 안됨 : " + socket.getRemoteSocketAddress() + ": " 
+											+ Thread.currentThread().getName() + "]"; 
+							// 로그 출력
+							Platform.runLater(()-> displayText(message));
+					
+							socket.close();
+						} catch (IOException e1) {
+						}
+						
+					}
+					
+				}
+					
+			};
+			//executorService 내부의 스레드가 run() 이라고 하는 작업을 실행하게 한다
+			executorService.submit(runnable);
 			
 		}
+		
+		// 클라이언트로 데이터를 보내는 메소드 => 매개값으로 문자열을 받아 클라이언트로 전송한다
+		void send(String data) {
+			Runnable runnable = new Runnable() {
+
+				@Override
+				public void run() {
+					// 클라이언트한테 데이터 보내는 메소드 작성
+					// 바이트배열 생성 => 보내고자 하는 매개값 data 에서 바이트 얻어낸다 
+					try {
+						byte[] byteArr = data.getBytes("UTF-8");
+						
+						// 클라이언트로 보내기
+						OutputStream outputStream = socket.getOutputStream();
+						// outputStream의 write메소드를 호출해 byteArr 에 저장된 내용을 클라이언트로 보낸다
+						outputStream.write(byteArr);
+						outputStream.flush(); // write메소드 호출후 꼭 사용해야한다
+						
+					} catch (Exception e) {
+						try {
+						// write 에서 예외 처리 발생시 출력로그 작성
+						String message = "[클라이언트 통신 안됨 : " + socket.getRemoteSocketAddress() + ": " 
+										+ Thread.currentThread().getName() + "]"; 
+						// 해당 클라이언트를 리스트에서 삭제
+						connections.remove(Client.this);
+						
+							socket.close();
+						} catch (IOException e1) {
+						}
+					}
+				}
+				
+			};
+			//executorService 내부의 스레드가 run() 이라고 하는 작업을 실행하게 한다
+			executorService.submit(runnable);
+		}
+
+		
 	}
 	
 	//////////////////////////////////////////////////////
