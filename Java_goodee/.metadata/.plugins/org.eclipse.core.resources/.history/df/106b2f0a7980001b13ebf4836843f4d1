@@ -1,0 +1,11 @@
+package ThisJava;
+
+import java.net.InetAddress;
+
+public class getIp {
+	public static void main(String[] args) {
+		
+		InetAddress local = InetAddress.getLocalHost();
+	}
+
+}

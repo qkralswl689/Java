@@ -1,0 +1,111 @@
+package sec07.exam03_chatting;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import ThisJava.ServerExample.Client;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+// 클래스 선언
+// Application 을 상속한다 => java fx실행클래스를 만들기 위해
+public class ServerExample extends Application {
+	
+	// 필드 선언
+	ExecutorService executorService; // 스레드풀 생성위해 선언
+	ServerSocket serverSocket; // 클라이언트의 연결요청 수락하기 위해 선언
+	
+	// List<Client> => 아래 class Client를  객체 생성 해 List에 저장
+	// Vector : 스레드에 안전하다
+	List<Client> connections = new Vector<Client>(); // 
+	
+	void startServer() { // 서버 시작 코드
+		// start 버튼 눌렀을 때 실행
+		
+		// 1) ExecutorService 객체 만들기
+		// executorService 라고 하는 스레드 풀 걕체 생성
+		executorService = Executors.newFixedThreadPool(
+				// 스레드 최대갯수 입력
+				// 현재 PC의 CPU가 지원하는 코어의 수를 얻을 수 있다 =>코어의 수 만큼 쓰레드 생성
+				Runtime.getRuntime().availableProcessors();
+			);
+			try {
+				// 2) ServerSocket 객체 만들어 포트에 binding 한다
+			}catch(Exception e) {
+				
+			}
+		
+		
+		
+		
+		
+	}
+		
+			
+	void stopServer() { // 서버 종료 코드
+		// stop 버튼 눌렀을 때 실행
+		
+	}	
+	
+	class Client { // 데이터 통신코드 
+		
+	}
+	
+	//////////////////////////////////////////////////////
+	// 자바로 UI 만드것
+	TextArea txtDisplay;
+	Button btnStartStop;
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		BorderPane root = new BorderPane();
+		root.setPrefSize(500, 300);
+		
+		txtDisplay = new TextArea();
+		txtDisplay.setEditable(false);
+		BorderPane.setMargin(txtDisplay, new Insets(0,0,2,0));
+		root.setCenter(txtDisplay);
+		
+		btnStartStop = new Button("start");
+		btnStartStop.setPrefHeight(30);
+		btnStartStop.setMaxWidth(Double.MAX_VALUE);
+		btnStartStop.setOnAction(e->{
+			if(btnStartStop.getText().equals("start")) {
+				startServer();
+			} else if(btnStartStop.getText().equals("stop")){
+				stopServer();
+			}
+		});
+		root.setBottom(btnStartStop);
+		
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("app.css").toString());
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Server");
+		primaryStage.setOnCloseRequest(event->stopServer());
+		primaryStage.show();
+	}
+	
+	void displayText(String text) {
+		txtDisplay.appendText(text + "\n");
+	}	
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

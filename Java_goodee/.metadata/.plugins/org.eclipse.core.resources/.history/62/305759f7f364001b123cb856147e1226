@@ -1,0 +1,12 @@
+// 주석 : ctrl + / OR ctrl + 7
+
+package com.javatem.jse;
+
+public class JavaEx1 {
+
+	public static void main(String[] args) {
+
+		System.out.println("JAVA자바");
+	}
+
+}

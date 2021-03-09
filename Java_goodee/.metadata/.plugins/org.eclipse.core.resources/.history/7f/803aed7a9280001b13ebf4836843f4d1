@@ -1,0 +1,11 @@
+package ThisJava;
+
+import org.omg.CORBA.ServerRequest;
+
+public class SeverSoket {
+	public static void main(String[] args) {
+		
+		ServerRequest serverSoket = new ServerRequest(5001);
+	}
+
+}

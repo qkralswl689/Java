@@ -1,0 +1,12 @@
+package ThisJava;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class SeverSoket {
+	public static void main(String[] args) throws IOException {
+		
+		ServerSocket serverSoket = new ServerSocket(5001);
+	}
+
+}

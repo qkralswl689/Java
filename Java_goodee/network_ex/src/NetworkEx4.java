@@ -3,9 +3,11 @@ import java.io.*;
 
 public class NetworkEx4 {
 	public static void  main(String args[]) {
+		// html Ãâ·Â
+		
 		URL url = null;
 		BufferedReader input = null;
-		String address = "http://www.codechobo.com/sample/hello.html";
+		String address = "https://cafe.naver.com/gdjava1";
 		String line = "";
 
 		try {

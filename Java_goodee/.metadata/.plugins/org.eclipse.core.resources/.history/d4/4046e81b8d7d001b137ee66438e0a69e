@@ -1,0 +1,10 @@
+package ThisJavaThread;
+
+public class ThreadA extends Thread{
+	
+	public ThreadA() {
+		// 스레드 이름 설정
+		setName("ThreadA");
+	}
+
+}

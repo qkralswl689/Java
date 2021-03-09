@@ -1,0 +1,10 @@
+package selfjava_02_17;
+
+public class ThreadNameEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

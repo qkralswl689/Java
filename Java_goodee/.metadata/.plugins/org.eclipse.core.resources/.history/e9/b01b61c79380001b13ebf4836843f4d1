@@ -1,0 +1,21 @@
+package ThisJava;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class SeverSoket {
+	public static void main(String[] args)  {
+		
+		// 1) 서버 소켓변수 선언
+		ServerSocket serverSoket = null;
+		
+		// 2) 서버 소켓 객체 생성 => 예외가 발생할 수 있기 때문에 예외처리를 한다
+		try {
+			serverSoket = new ServerSocket();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

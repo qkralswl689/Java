@@ -1,0 +1,11 @@
+package jse_20210308_1;
+
+public class WriteExSelfStudy {
+
+	public static void main(String[] args) {
+		
+		// 1 byte씩 출력하기
+		
+	}
+
+}

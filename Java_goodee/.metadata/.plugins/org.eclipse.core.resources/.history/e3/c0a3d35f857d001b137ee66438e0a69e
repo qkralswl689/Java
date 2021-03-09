@@ -1,0 +1,6 @@
+package ThisJavaThread;
+
+public class Thread {
+	Thread thread = Thread(Runnable target);
+
+}

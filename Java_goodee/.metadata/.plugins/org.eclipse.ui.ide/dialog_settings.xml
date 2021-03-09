@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value=""/>
+			<item value="C:\Users\82104\Desktop"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="C:\Users\82104\Desktop\SW\SelfStudyJava\chap02.zip"/>
+			<item value="C:\Users\82104\Desktop\SW\SelfStudyJava\chap01.zip"/>
+			<item value="C:\Users\82104\eclipse-workspace\java1\sample.zip"/>
+			<item value=""/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\82104\Desktop\goodee\자바200제\5674-785\java200booknew1"/>
+			<item value="C:\Users\82104\Desktop\goodee\5674-785_PT\5674-785"/>
+			<item value="C:\Users\82104\eclipse-workspace\java1\io_project"/>
+			<item value="C:\Users\82104\eclipse-workspace\java1\Chatting"/>
+			<item value="C:\Users\82104\eclipse-workspace\java1\thread_ex_ms949"/>
+			<item value="C:\Users\82104\eclipse-workspace\java1\jse_20210222_1\LottoProject\src\com\javateam\jse\lotto"/>
+			<item value="C:\Users\82104\eclipse-workspace\java1\jse_20210222_1\LottoProject"/>
+			<item value="C:\Users\82104\Desktop\git_ming\Java\self_study"/>
+			<item value="C:\Users\82104\eclipse-workspace\java1\jse_20210208_1"/>
+			<item value="C:\Users\82104\Desktop\git_ming\BackJoon"/>
+			<item value="C:\Users\82104\Desktop\git_ming\BackJoon\BaekJoon"/>
+			<item value="C:\Users\82104\eclipse-workspace\java1\CodeUP"/>
+			<item value="C:\Users\82104\Desktop\git_ming\CodeUp"/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;for1356.java&apos; to &apos;for1356.java&apos;&#x0D;&#x0A;- Original project: &apos;CodeUP&apos;&#x0D;&#x0A;- Destination element: &apos;for1356.java&apos;&#x0D;&#x0A;- Original element: &apos;for1356.java&apos;" description="Copy compilation unit" destination="/src&lt;{for1356.java" element1="/src&lt;{for1356.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1614609532706" units="1" version="1.0"/>
+</session>

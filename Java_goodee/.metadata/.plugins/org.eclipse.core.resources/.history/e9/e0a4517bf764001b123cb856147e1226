@@ -1,0 +1,14 @@
+// 줄단위 주석(comment, notation) : ctrl + / OR ctrl + 7
+/*
+ 문단(block) 주석
+ */
+package com.javatem.jse; // package => 키워드 (예약어:keyword)
+// class,인터페이스,열거형,예외처리,에러 등의 집합
+public class JavaEx1 { 
+
+	public static void main(String[] args) {
+
+		System.out.println("JAVA자바");
+	}
+
+}

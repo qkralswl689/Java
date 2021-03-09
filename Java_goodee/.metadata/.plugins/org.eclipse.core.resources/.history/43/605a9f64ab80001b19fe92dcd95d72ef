@@ -1,0 +1,74 @@
+package ThisJavaRead;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.InetSocketAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class SeverSoket {
+	public static void main(String[] args)  {
+		
+		// 1) 서버 소켓변수 선언
+		ServerSocket serverSocket = null;
+		
+		// 2) 서버 소켓 객체 생성 => 예외가 발생할 수 있기 때문에 예외처리를 한다
+		try {
+			serverSocket = new ServerSocket();
+			
+			// 3) 포트와 바인드 => 현재 컴퓨터의 5001 번에 바인딩 한다는 뜻
+			serverSocket.bind(new InetSocketAddress("localhost",5001));
+			
+			// 4) 무한루프 => 서버는 항상 클라이언트의 요청을 기다려야 하기 때문에
+			while(true) {
+				System.out.println("[연결 기다림]");
+				
+				// 5) 클라이언트 연결 요청 수락 => 클라이언트가 연결요청 하기 전까지는 대기상태
+				// 클라리언트로부터 연결요청이 왔을 때 accept는 soket이라는 통신용 객체를 생성하고 리턴한다
+				Socket socket = serverSocket.accept();
+				// Socket 을 가지고 클라이언트의 정보를 얻어 내거나 클라이언트와 데이터를 주고 받을 수 있다
+								
+				// 6) 클라이언트의 아이피 출력하기
+				//(InetSocketAddress) : 타입변환 => getRemoteSocketAddress 가 SocketAddress를 
+				// 리턴하기때문에 InetSocketAddress 으로 타입변환 해준다
+				InetSocketAddress isa = (InetSocketAddress) socket.getRemoteSocketAddress();
+				System.out.println("[연결 수락함]" + isa.getHostName());
+				
+				// 8) 받은 데이터 저장할 byte배열 생성
+				byte[] bytes =null;
+				
+				// 9) 문자열로 변환해서 저장할 변수 선언
+				String message = null;
+				
+				// 10) 클라이언트가 보낸 데이터 받기
+				InputStream is = socket.getInputStream();
+				
+				// 11) 길이 100 짜리 byte 배열생성
+				bytes = new byte[100];
+				
+				// 12) 데이터 읽기
+				// is.read() : input stream으로부터 read메소드 불러오기
+				// is.read(bytes) : 매개값 => 바이트배열
+				// read() : 클라이언트가 데이터를 보내기 전 까지는 대기 상태이다
+				// 클라이언트가 데이터를 보내게 되면 배개값(bytes)에 저장되고
+				// 실제로 읽은 바이트 수는 변수 (readByteCount) 에 저장된다
+				int readByteCount = is.read(bytes);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// 7) 서버 소켓 닫기
+		// 만약에 서버소켓이 현재 닫혀있지 않다면
+		if(!serverSocket.isClosed()) {
+			// 서버소켓을 닫아준다 , 예외처리
+			try {
+				serverSocket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

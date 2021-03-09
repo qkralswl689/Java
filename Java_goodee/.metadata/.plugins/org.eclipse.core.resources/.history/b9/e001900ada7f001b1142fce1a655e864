@@ -1,0 +1,55 @@
+package Java_Nam;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class StreamEx {
+
+	public static void main(String[] args) {
+//		
+//		// 리스트 생성
+//		List<Integer> list = Arrays.asList(1,2,3,4,5); 
+//		
+//		// 리스트 -> 스트림 => list를 데이터 소스로 하는 새로운 스트림 생성
+//		Stream<Integer> intStream = list.stream();
+//		
+//		// 스트림요소 출력
+//		intStream.forEach(System.out::print); // forEach : 최종연산
+//		
+//		System.out.println();
+//		// Stream은 1회용, Stream에 대해 최종연산을 수행하면 Stream이 닫힌다
+//		// 에러 출력 => 스트림이 최종연산 되었기 때문에 -> 스트림 다시 생성해서 출력해야 한다
+//		intStream = list.stream(); // list로부터 stream을 생성
+//		intStream.forEach(System.out::print);	
+//		
+		// Stream.of 메소드 사용 (가변인자 입력)
+		// Stream<String> strStream = Stream.of("a","b","c");
+		
+		// 배열로 넣기
+		String[] strArr = new String[] {"a","b","c","d"};
+		// Stream<String> strStream = Stream.of(strArr);
+		// 또는 
+		Stream<String> strStream = Arrays.stream(strArr);
+		
+		// 위의 식 한줄로 줄인것
+		// Stream<String> strStream = Stream.of(new String[] {"a","b","c","d"});
+		
+		// Stream출력
+		strStream.forEach(System.out::println);
+		
+		// IntStream 사용 => 기본형 스트림이 된다
+		// 기본스트림 : 카운트 제외하고 여러 메소드가 있다 => SUM,AVG 등...
+//		int[] intArr = {1,2,3,4,5};
+//		IntStream intStream = Arrays.stream(intArr);
+		
+		// Stream<Integer> 사용 => Integer객체 스트림이 된다
+		Integer[] intArr = {1,2,3,4,5};
+		Stream<Integer> intStream = Arrays.stream(intArr);
+		
+		
+		// Stream출력
+		intStream.forEach(System.out::println);
+	}
+}

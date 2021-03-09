@@ -1,0 +1,9 @@
+package ThisJavaThread;
+
+import java.awt.Toolkit;
+
+public class Thread2 implements Runnable {
+
+	
+}
+

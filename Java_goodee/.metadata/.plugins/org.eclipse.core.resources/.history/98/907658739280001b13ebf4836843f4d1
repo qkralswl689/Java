@@ -1,0 +1,9 @@
+package ThisJava;
+
+public class SeverSoket {
+	public static void main(String[] args) {
+		
+		ServerSoket serverSoket = new ServerSoket(5001);
+	}
+
+}

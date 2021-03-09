@@ -1,0 +1,54 @@
+// 줄단위 주석(comment, notation) : ctrl + / OR ctrl + 7
+/*
+ 문단(block) 주석
+ */
+package com.javatem.jse; // package => 키워드 (예약어:keyword)
+// package : class,interface,열거형(enum),예외처리(exception),
+//			 error,annotation(애너테이션) 등의 집합
+// package 명명법(naming rule(convention)) : 항상 소문자로 작성해야 한다
+// => https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html
+// ex) 회사 -> 부서 -> 프로젝트 -> 모듈 : 각각의 폴더로 돼있다 (tree 구조) / .으로 구분한다
+// ; => 문장 마침표
+public class JavaEx1 { // (O)
+// public : access modifier(접근 제한자(제어자, 변경자, 지시자))	
+// 프로그램의 접근성(보안:permission) 조정
+// public : 가장 개방적인 접근 제어자 키워드 
+// class : 클래스 => 참조 자료형, 구조적 언어의 구조체(structure)의 확장판
+// JavaEx1 : 클래스명
+// class public JavaEx1{//(X)
+// JavaEx1 class public { // (x)
+
+	public static void main(String[] args) { // (O)
+// 메인 메서드(객체 함수)
+// public void main(String[] args) { // (X)
+// public static void Main(String[] args) { // (X)
+// public static void main(int num) { // (X)
+// public static int main(String[] args) { // (X) 반환값(리턴값) => void (반환값이 없
+
+// static public void main(String[] args { // (O) 
+// => 일반제어자(static : 메모리 주소 정적)/접근제어자(public: 접근성 개방적)는 순서와 무관 : 어떤것을 강조하느냐에 따라 순서 바꿀 수 있다
+// public static void main(String[] params) { // (O) 인자명 무관
+// [] : 배열(array) 기호)연산자
+/*
+  	메서드(method), 함수 (function) : 기능을 가지고 있는 서브(sub) 프로그램
+  	1) 접근/일반 제어자 ex) 접근 - public /일반 - static
+  	2) 리턴(반환) 자료형  ex) 리턴(반환)이 없으면 void
+  	3) 메서드(함수)명 ex) main
+  	4) 인자(인수,매개변수) : 형식) (인자의 자료형 인자명) ex) (String[] args)
+  	참고) 실인자(argument), 가인자(형식인자)(parameter)
+  	5) 구현부/블럭/몸통(body) : { 실제 코드들을 작성  } 
+  	6) 분기(빠져나옴)-출력된다 : ex) return; ex) 리턴 자료형 int(정수형) => return 1;
+ */
+
+		System.out.println("JAVA자바");
+		/*
+		  "." : 소속(멤버) 연산자
+		  
+		*/
+		
+		
+		return; // 단순 분기(함수 종료) => void 리턴형에서는 가능! 보통 조건문과 같이 사용
+		// return 0; // (X)
+	}
+
+}

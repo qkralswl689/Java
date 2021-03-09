@@ -1,0 +1,76 @@
+/**
+ * 
+ */
+package JdbcTest;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+/**
+ * DB �뿰寃�/�빐�젣(�옄�썝 諛섎궔) �쑀�떥由ы떚
+ * 
+ * @author javateam
+ *
+ */
+public class DbUtil {
+	
+	/**
+	 * DB �뿰寃�
+	 * 
+	 * usage) DbUtil.connect();
+	 * 
+	 * @return DB �뿰寃� 媛앹껜
+	 */
+	public static Connection connect() {
+		
+		Connection con = null; // DB �뿰寃� 媛앹껜
+		// final String driver = "oracle.jdbc.driver.OracleDriver";
+		final String driver = "oracle.jdbc.OracleDriver"; // JDBC �뱶�씪�씠踰�
+		final String url = "jdbc:oracle:thin:@localhost:1521:xe"; // JDBC URL
+		final String id = "java"; // 怨꾩젙 �븘�씠�뵒
+		final String pw = "java"; // 怨꾩젙 �뙣�벐�썙�뱶
+		
+		try {
+				// JDBC driver 寃��깋/濡쒕뵫(loading)
+				Class.forName(driver);
+				// DB �뿰寃� 媛앹껜 諛섑솚(DB �뿰寃�)
+				con = DriverManager.getConnection(url, id, pw);
+				
+		} catch (ClassNotFoundException e) {
+			System.out.println("DbUtil connect CNFE :");
+			e.printStackTrace();
+		} catch(SQLException e) {
+			System.out.println("DbUtil connect SE : ");
+			e.printStackTrace();
+		}
+		
+		return con;
+	} //
+	
+	/**
+	 * DB �뿰寃� �빐�젣(�옄�썝 諛섎궔)
+	 * 
+	 * @param con DB �뿰寃� 媛앹껜
+	 * @param pstmt SQL 泥섎━ 媛앹껜
+	 * @param rs SQL 泥섎━ 寃곌낵�뀑
+	 */
+	public static void close(Connection con,
+							 PreparedStatement pstmt,
+							 ResultSet rs) {
+		try {
+				if (rs != null) rs.close();
+				// if (!rs.isClosed()) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (con != null) con.close();
+				
+		} catch(SQLException e) {
+			System.out.println("DbUtil close SE : ");
+			e.printStackTrace();
+		} // 
+				
+	} //
+
+}

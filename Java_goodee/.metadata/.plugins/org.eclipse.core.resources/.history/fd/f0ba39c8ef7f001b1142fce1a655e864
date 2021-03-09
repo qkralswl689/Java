@@ -1,0 +1,15 @@
+package jse_20210308_1;
+
+import java.io.FileReader;
+import java.io.Reader;
+
+public class ReaderSelfStudy {
+
+	public static void main(String[] args) throws Exception {
+		
+		// ("C:/Temp/Test7.txt") : 데이터 도착지를 Test7.txt로 하는 문자 기반 파일 출력 스트림 생성
+		Reader reader = new FileReader("C:/Temp/Test7.txt");
+
+	}
+
+}

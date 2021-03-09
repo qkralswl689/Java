@@ -16,12 +16,16 @@ class ClientThread extends Thread{
 		  socket = user_socket;
 		  server  = main_server;
              
+		  // 입력 스트림
           reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+          
+          // 출력 스트림
           writer  = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
       }
       
 
+      // 작동
      // Thread run 메소드
      public void run(){
 

@@ -1,0 +1,14 @@
+package jse_20210308_1;
+
+import java.io.*;
+
+public class WriteEx {
+	
+	public static void main(String[] args) {
+		
+		try {
+			OutputStream os = new FileOutPutStream()
+		}
+	}
+
+}

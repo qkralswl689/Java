@@ -1,0 +1,18 @@
+package Java_Nam;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class StreamEx {
+
+	public static void main(String[] args) {
+		
+		// 리스트 생성
+		List<Integer> list = Arrays.asList(1,2,3,4,5); 
+		
+		// 리스트 -> 스트림 치환
+		Stream<Integer> intStream = list.stream();
+		
+	}
+
+}

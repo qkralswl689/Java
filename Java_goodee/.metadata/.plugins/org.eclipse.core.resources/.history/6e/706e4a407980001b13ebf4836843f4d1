@@ -1,0 +1,19 @@
+package ThisJava;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class getIp {
+	public static void main(String[] args) {
+		
+		try {
+			InetAddress local = InetAddress.getLocalHost();
+			System.out.println("내 컴퓨터 IP 주소 : " + local.getHostAddress());
+			System.out.println("내 컴퓨터 이름 : " + local.getHostName());
+
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

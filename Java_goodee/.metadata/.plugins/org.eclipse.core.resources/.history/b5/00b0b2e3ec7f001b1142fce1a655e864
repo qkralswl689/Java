@@ -1,0 +1,16 @@
+package jse_20210308_1;
+
+import java.io.FileWriter;
+import java.io.Writer;
+
+public class WriteStudySelf {
+
+	public static void main(String[] args) throws Exception {
+		
+		// 한 문자씩 출력하기
+		
+		Writer writer = new FileWriter("C:/Temp/Test7.txt");
+
+	}
+
+}

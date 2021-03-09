@@ -1,0 +1,13 @@
+package ThisJavaThread;
+
+import java.awt.Toolkit;
+
+public class Thread {
+	
+	public static void main(String[] args) {
+		
+		// Toolkit °´Ã¼ »ý¼º
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+	}
+}
+

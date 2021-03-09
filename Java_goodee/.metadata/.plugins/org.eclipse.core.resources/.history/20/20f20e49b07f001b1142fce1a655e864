@@ -1,0 +1,32 @@
+package jse_20210308_1;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+public class WriteEx {
+	
+	public static void main(String[] args) {
+		
+		try {
+			OutputStream os = new FileOutputStream("c:/Temp/Test1.db");
+			
+			
+			
+			os.flush();
+			os.close();
+		
+		// } catch(Exception e) {
+			
+		// } catch (FileNotfoundException | IOException e) { (X)
+		// 같은 성격(상속,구현)의 예외처리 클래스 동반 X
+		}catch(FileNotFoundException e) {
+			
+		
+		}catch(IOException e) { // 포괄적인 예외처리가 나중에 나와야 한다
+			
+		}
+	}
+
+}

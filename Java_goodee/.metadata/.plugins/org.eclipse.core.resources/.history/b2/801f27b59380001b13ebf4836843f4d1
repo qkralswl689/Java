@@ -1,0 +1,16 @@
+package ThisJava;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class SeverSoket {
+	public static void main(String[] args) throws IOException {
+		
+		// 1) 서버 소켓변수 선언
+		ServerSocket serverSoket = null;
+		
+		// 2) 서버 소켓 객체 생성
+		serverSoket = new ServerSocket();
+	}
+
+}

@@ -1,0 +1,16 @@
+package Java200;
+
+public class Java15 {
+
+	public static void main(String[] args) {
+		
+		boolean isL = false;
+		char suit = 'H';
+		int year = 5;
+		double latitude = 3.1f;
+		double longitude = 3.4f;
+		
+				
+	}
+
+}

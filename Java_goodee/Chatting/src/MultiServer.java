@@ -9,10 +9,15 @@ public class MultiServer{
      * Iterator로 교체하여 프로그램을 교정합니다. 	
      */
     ServerSocket		sc;
-    Vector				clients; // 문-1) 
+    
+    // Vecor : 리스트의 지원 클래스 => 동기화가 된다
+    Vector<ClientThread> clients; // 문-1) 
+    // Vector<Thread> clients; // 문-1)
+    // Vector<? extends Thread> clients; // 문-1)
+    // Vector<? extends ClientThread> clients; // 문-1)
     ClientThread		client;
-    Enumeration			clientsEn; // 문-2)
-
+    // Enumeration<ClientThread> clientsEn; // 문-2)
+    Iterator<ClientThread> clientsEn;
 
     // 메인 메소드
     public static void main(String args[]){ 
@@ -31,13 +36,17 @@ public class MultiServer{
     public MultiServer() throws Exception{
 
 	   sc=new ServerSocket(7777);
-       clients=new Vector(); // 문-1)
+       // clients=new Vector(); // 문-1)
+	   // clients=new Vector<>(); // 문-1)
+	   clients=new Vector<ClientThread>(); // 문-1)
+	   
     }
 
     public void welcomeclients() throws Exception{
 
 	   while(true) {
 			Socket socket=sc.accept();
+			// thread로 등록
 			client=new ClientThread(socket, this);
 
 			addClient(client);
@@ -49,9 +58,11 @@ public class MultiServer{
     // 채팅 클라이언트 추가
     // 문-3) 문-1,2)에 따라서 아래 메서드의 인자를 다른 클래스로 변경할 수 있습니다. 
     // Hint) 문-1 의 Vector의 요소와 관련이 있습니다.
-    public synchronized void addClient(Thread clientThread){
+    // public synchronized void addClient(Thread clientThread){ // howto-1
+    public synchronized void addClient(ClientThread clientThread){ // howto-2
 
-	   clients.add(clientThread); // 
+	   clients.add(clientThread); // howto-2 
+       // clients.add((ClientThread)clientThread); // howto-1
        System.out.println("current clients : "+clients.size());
     }
 
@@ -61,13 +72,20 @@ public class MultiServer{
     public synchronized void broadCast(String message){
 
        // TODO
-       clientsEn=clients.elements();
-      
-	   while(clientsEn.hasMoreElements()){
-    
-		  ((ClientThread)clientsEn.nextElement()).sendMessage(message);
-      
-	   }
+//     clientsEn=clients.elements();
+//      
+//	   while(clientsEn.hasMoreElements()){
+//    
+//		  ((ClientThread)clientsEn.nextElement()).sendMessage(message);
+//      
+//	   }
+    	
+    	clientsEn = clients.iterator();
+    	
+    	while (clientsEn.hasNext()) {
+    		clientsEn.next().sendMessage(message);
+    	} //
+    	
     }
 	
     // 메시지 전송(멀티 에코) 호출 

@@ -1,0 +1,14 @@
+package Java_Nam;
+
+import java.util.Random;
+
+public class StreamEx2 {
+
+	public static void main(String[] args) {
+
+		// Random클래스 객체 생성 .ints 메소드 호출
+		// int난수 스트림 반환
+		IntStream new Random().ints();
+	}
+
+}

@@ -1,0 +1,39 @@
+package Java_Nam;
+
+import java.util.Random;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class StreamEx2 {
+
+	public static void main(String[] args) {
+
+		// Random클래스 객체 생성 .ints 메소드 호출
+		// int난수 스트림 반환
+		// IntStream intStream = new Random().ints();// 무한스트림
+		// IntStream intStream = new Random().ints(5,10); // 무한스트림, 범위 지정 => 5부터 10까지 => 10은 포함X
+//		IntStream intStream = new Random().ints(7,5,10); // limit 7개,5부터 10까지 
+//		
+//		// 스트림 출력
+//		// limit(5) : 5개만 출력하기
+//		intStream.limit(5).forEach(System.out::println);
+		
+		
+		// 1) iterate() 이용해 짝수 스트림 생성
+		// n -> n + 2 : 람다식 
+		// Stream<Integer> intStream = Stream.iterate(2, n -> n + 2); 
+		
+		// 1-2) iterate() 이용해 홀수 스트림 생성
+		Stream<Integer> intStream = Stream.iterate(1, n -> n + 2); 
+		
+		// 1) Stream 출력
+		//intStream.limit(10).forEach(System.out::println);
+		
+		// 2) gemerate() 이용 : 1만 반복해서 출력
+		Stream<Integer> oneStream = Stream.generate(()->1);
+		
+		// 2) Stream 출력
+		oneStream.limit(10).forEach(System.out::println);
+
+ 	}
+}

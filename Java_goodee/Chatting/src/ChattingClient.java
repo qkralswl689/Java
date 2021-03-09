@@ -43,6 +43,7 @@ public class ChattingClient extends Frame
 		  p2 = new Panel();
 
 		  ta  = new TextArea();
+		  // TextField(40) : 영문 40자
 		  tf   = new TextField(40);
 
 		  tf.addActionListener(this);
@@ -50,6 +51,7 @@ public class ChattingClient extends Frame
 		  list = new List();
 		  b   = new Button("Exit");
 
+		  // GridLayout(1,2) : 그리드 행이 1개 열이 2개
 		  p1.setLayout(new GridLayout(1,2));
 		  
 		  p1.add(ta); 
@@ -63,8 +65,13 @@ public class ChattingClient extends Frame
 		  name   = userName;           
 
 	      InetAddress realHost = InetAddress.getByName(HostIP);
+	      
+	      // 포트 번호 받아 숫자로 바꿔준다 => 7777 => 멀티서버클래스에서 확인
 		  int realPort = Integer.parseInt(HostPort);
 
+		  // 서버에 연결을 요청하는 Socket 생성
+		  // realHost : IP
+		  // realPort : 
      	  socket = new Socket(realHost, realPort );
 
 		  reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

@@ -1,0 +1,17 @@
+// 줄단위 주석(comment, notation) : ctrl + / OR ctrl + 7
+/*
+ 문단(block) 주석
+ */
+package com.javatem.jse; // package => 키워드 (예약어:keyword)
+// package : class,interface,열거형(enum),예외처리(exception),
+//			 error,annotation(애너테이션) 등의 집합
+// 명명법(naming rule(convention))
+// => https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html
+public class JavaEx1 { 
+
+	public static void main(String[] args) {
+
+		System.out.println("JAVA자바");
+	}
+
+}

@@ -1,0 +1,32 @@
+package Java_Nam;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class StreamEx {
+
+	public static void main(String[] args) {
+//		
+//		// 리스트 생성
+//		List<Integer> list = Arrays.asList(1,2,3,4,5); 
+//		
+//		// 리스트 -> 스트림 => list를 데이터 소스로 하는 새로운 스트림 생성
+//		Stream<Integer> intStream = list.stream();
+//		
+//		// 스트림요소 출력
+//		intStream.forEach(System.out::print); // forEach : 최종연산
+//		
+//		System.out.println();
+//		// Stream은 1회용, Stream에 대해 최종연산을 수행하면 Stream이 닫힌다
+//		// 에러 출력 => 스트림이 최종연산 되었기 때문에 -> 스트림 다시 생성해서 출력해야 한다
+//		intStream = list.stream(); // list로부터 stream을 생성
+//		intStream.forEach(System.out::print);	
+//		
+		// Stream.of메소드 사용
+		Stream<String> strStream = Stream.of("a","b","c");
+		// Stream출력
+		strStream.forEach(System.out::println);
+		
+	}
+}

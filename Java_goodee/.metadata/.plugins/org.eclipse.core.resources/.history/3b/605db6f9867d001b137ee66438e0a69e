@@ -1,0 +1,35 @@
+package ThisJavaThread;
+
+import java.awt.Toolkit;
+
+public class Thread2 {
+	
+	public static void main(String[] args) {
+		// 비프음 들려주는 작업 정의 (Runnable 구현 클래스)	
+		
+		// Toolkit 객체 생성
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		for(int i=0; i<5; i++) {
+			
+			// 비프음 발생
+			toolkit.beep(); 
+			
+			// Thread.sleep(500) : 0.5초간 일시정지
+			try { Thread2.sleep(500);} catch(Exception e) {}
+						
+		}
+		for(int i=0; i<5; i++) {
+			System.out.println("띵");
+			
+			// Thread.sleep(500) : 0.5초간 일시정지
+			try {Thread2.sleep(500); } catch(Exception e) {}
+			
+		}
+	}
+
+	private static void sleep(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+

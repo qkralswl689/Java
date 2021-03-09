@@ -1,0 +1,17 @@
+package ThisJavaThread;
+
+public class Thread3  {
+
+	public static void main(String[] args) {
+		
+		// 비프음 - 메인 스레드와 작업 스레드가 동시에 실행
+		Runnable beepTask = new BeepTask();
+		Thread thread = new Thread(beepTask);
+		
+		
+		
+	}
+
+	
+}
+

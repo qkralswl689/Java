@@ -1,0 +1,76 @@
+package ThisJavaRead;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+
+public class Client {
+
+	public static void main(String[] args) {
+		
+		
+		// 1) 소켓 변수 선언
+		Socket socket = null;
+		
+		// 2) 소켓 객체 생성 => 서버에 연결요청하기 위해		
+		socket = new Socket();
+		
+		// 3) 연결하기 , 예외처리 필요
+		System.out.println("[연결 요청]");
+		try {
+			// ("localhost",5001) : 서버의 ip, 포트번호
+			socket.connect(new InetSocketAddress("localhost",5001));
+			System.out.println("[연결 성공]");
+			
+			// 4) 서버로 데이터 보낼 코드 작성
+			byte[] bytes = null; // 바이트 배열선언
+			String message = null; // 문자열로 변환해 저장할 변수 선언
+			
+			// 소켓으로부터 아웃풋 스트림을 얻어낸다
+			OutputStream os = socket.getOutputStream();
+			
+			// 스트링 변수 message에 문자열 할당
+			message = "Hello Server";
+			
+			// message로 부터 바이트 배열 얻기
+			bytes = message.getBytes("UTF-8");
+			
+			// 5) output Stream 통해 데이터 전달(to서버)
+			os.write(bytes);
+			os.flush();
+			System.out.println("[데이터 보내기 성공]");
+			
+			// 6) 서버로 부터 데이터 받기
+			InputStream is = socket.getInputStream();
+			
+			// 길이 100짜리 바이트 배열 생성
+			bytes = new byte[100];
+			
+			// input Stream 으로부터 read메소드 호출해 바이트배열 읽기
+			int readByteCount = is.read(bytes);
+			
+			// 읽은 바이트 배열 문자열로 변환
+			// bytes 배열 의 0번 인덱스부터 읽은 바이트 수만큼 문자열로 변환
+			message = new String(bytes,0,readByteCount,"UTF-8");
+			System.out.println("[데이터 받기 성공] : " + message);
+			
+			os.close();
+			is.close();
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(!socket.isClosed()) {
+			try {
+				socket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

@@ -1,0 +1,17 @@
+package jse_20210308_1;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+public class ReadStreamSelfStudy {
+
+	public static void main(String[] args) throws Exception{
+		
+		// 1byte¾¿ ÀÐ±â
+		
+		InputStream is = new FileInputStream("C:/Temp/Test1.txt");
+
+		
+	}
+
+}
