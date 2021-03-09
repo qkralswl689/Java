@@ -65,7 +65,20 @@ public class kim_09_17 {
 		/*
 		  3. (1) + (1+2) + (1+2+3)+... (1+2+3+...10)=220 출력하기
 		*/
-		
+		int sum=0;
+		for(int i=1; i<=10;i++) {
+			System.out.print("(");
+			for(int j=1; j<=i;j++) {
+				if(j==1) {
+					System.out.print(j);
+				}else {
+					System.out.print("+"+j);
+				} sum +=i;
+				if(i==10) {
+					System.out.print("="+sum);
+				}
+			}
+		}
 
 		
 		
@@ -118,7 +131,7 @@ public class kim_09_17 {
 		
 		int n = sc.nextInt();
 		
-		for(int i=0; i<=n/2;i++) {
+		for(int i=0; i<n/2;i++) {
 			for(int j=0;j<i;j++) {
 				System.out.print(" ");				
 				
@@ -126,11 +139,12 @@ public class kim_09_17 {
 				System.out.print("*");
 			}System.out.println();	
 		
-		}for (int i=1;i<=n/2;i++) {
-			for(int j=1; j<i;j++) {
-				System.out.print("+");
-//			}for(int j=1;j<=i*2;j++) {
-//				System.out.print(j);
+		}for (int i=0;i<=n/2;i++) {
+			for(int j=n/2; j>i;j--) {
+				System.out.print(" ");
+			
+			}for(int j=0;j<=i*2;j++) {
+				System.out.print("*");
 			}System.out.println();
 		  }
 		

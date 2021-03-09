@@ -142,7 +142,7 @@ public class kim_09_17_answer {
 			for(int j=1;j<i;j++) {
 				System.out.print(" ");
 			}for(int j=n;j>=2*i-1;j--) {
-				System.out.print("*");
+				System.out.print(j);
 			}System.out.println();
 		}
 		for(int i=(n/2)+1;i>=1;i--) {  // (2 / num) + 1 줄부터 num 줄까지
