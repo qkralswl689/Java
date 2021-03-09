@@ -1,8 +1,0 @@
-package ThisJava;
-
-public class SeverSoket {
-	public static void main(String[] args) {
-		
-	}
-
-}
