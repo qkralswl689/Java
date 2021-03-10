@@ -25,6 +25,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\82104\Desktop\git_ming\Java\Java_goodee\jse_20210310_1"/>
+			<item value="C:\Users\82104\Desktop\git_ming\Java\Java_goodee\ChattingThisJava"/>
+			<item value="C:\Users\82104\Desktop\git_ming\Java\Java_goodee\io_project"/>
 			<item value="C:\Users\82104\Desktop\goodee\자바200제\5674-785\java200booknew1"/>
 			<item value="C:\Users\82104\Desktop\goodee\5674-785_PT\5674-785"/>
 			<item value="C:\Users\82104\eclipse-workspace\java1\io_project"/>
