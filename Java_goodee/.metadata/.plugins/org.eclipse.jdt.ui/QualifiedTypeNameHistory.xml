@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="Car.Body"/>
-<fullyQualifiedTypeName name="Car.Wheel"/>
-<fullyQualifiedTypeName name="Car.Engine"/>
-<fullyQualifiedTypeName name="com.javateam.jse.OuterClass.InnerClass"/>
-<fullyQualifiedTypeName name="com.javateam.jse.OuterClass2.StaticClass"/>
-<fullyQualifiedTypeName name="com.javateam.math.MathDemo.InnerMath"/>
 <fullyQualifiedTypeName name="com.javateam.math.MathDemo"/>
 <fullyQualifiedTypeName name="Java_Nam_InnerTest_02_17.AAA.BBB"/>
 <fullyQualifiedTypeName name="com.javateam.jse.MemberVO"/>
@@ -52,12 +46,18 @@
 <fullyQualifiedTypeName name="java.util.stream.Stream"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.io.OutputStream"/>
-<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
-<fullyQualifiedTypeName name="java.io.Writer"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="java.io.Reader"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="com.javateam.jdbc.member.util.DbUtil"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.Writer"/>
+<fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
 </qualifiedTypeNameHistroy>

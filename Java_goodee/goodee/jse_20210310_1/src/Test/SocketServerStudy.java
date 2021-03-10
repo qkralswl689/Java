@@ -10,7 +10,7 @@ import java.net.Socket;
 
 import java.lang.reflect.Method;
 
-public class SocketServer {
+public class SocketServerStudy {
 	
 	public static void main(String args[]) throws IOException {
 	
@@ -26,8 +26,8 @@ public class SocketServer {
 	// 서버 소켓을 8888번 포트로 결합(bind)하여 생성시킵니다.
 	
 		try {
-			serverSocket = new ServerSocket();
-			serverSocket.bind(new InetSocketAddress("localhost",8888));
+			 serverSocket = new ServerSocket(8888);
+			
 		} catch(IOException e) {
 			System.out.println(e.getMessage());
 		}
