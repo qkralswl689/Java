@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"com.javateam.jdbc.member.util","l":"DbUtil"}];updateSearchResults();

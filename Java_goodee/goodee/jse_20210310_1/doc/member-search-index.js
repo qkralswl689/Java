@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"com.javateam.jdbc.member.util","c":"DbUtil","l":"DbUtil()","u":"%3Cinit%3E()"}];updateSearchResults();
