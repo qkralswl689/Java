@@ -1,8 +1,8 @@
-package com.javateam.jdbc.member.test;
+package JDBC;
 
 import java.sql.Date;
 
-import com.javateam.jdbc.member.domain.MemberVo;
+import JDBC.MemberVo;
 
 
 
@@ -24,13 +24,13 @@ public class VoTest {
 		member.setMemberId("java");
 		member.setMemberPassword("1234");
 		member.setMemberNicname("달팽이");
-		member.setMemberName("배00");
+		member.setMemberName("배현");
 		member.setMemberGender('m');
-		member.setMemberEmail("skfksnsk@skfksnsk.com");
-		member.setMemberPhone("010-1111-2222");
+		member.setMemberEmail("skfksnsk@gmail.com");
+		member.setMemberPhone("010-3073-0694");
 		
 		// 생일 ) 0000-00-00
-		member.setMemberBirth(java.sql.Date.valueOf("1991-01-04"));
+		member.setMemberBirth(Date.valueOf("1991-01-04"));
 		member.setMemberZip("12345");
 		member.setMemberAddressBasic("서울시");
 		member.setMemberAddressDetail("강서구");

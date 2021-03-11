@@ -1,4 +1,4 @@
-package com.javateam.jdbc.member.domain;
+package JDBC;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -194,7 +194,8 @@ public class MemberVo implements Serializable{
 				&& Objects.equals(memberPassword, other.memberPassword)
 				&& Objects.equals(memberPhone, other.memberPhone) && memberZip == other.memberZip;
 	}
-	
+
+
 	
 	
 	

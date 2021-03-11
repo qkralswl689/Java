@@ -54,31 +54,31 @@ public class SocketServerAnswer {
 
 				// 만약 요청이 들어오면 클라이언트 소켓과 통신할 새로운 소켓을 생성합니다.
 
-				Socket socket = serverSocket.accept();
+				Socket socket1 = serverSocket.accept();
 
-				System.out.println(socket.getInetAddress() + " IP로부터 연결요청이 들어왔습니다.");
+				System.out.println(socket1.getInetAddress() + " IP로부터 연결요청이 들어왔습니다.");
 
 // 문제-6) 소켓의 출력스트림을 OutputStream 클래스를 활용하여 out 객체를 생성합니다.
 
-				OutputStream out = socket.getOutputStream();
+				OutputStream out = socket1.getOutputStream();
 
 // 문제-7) 위에서 생성된 out 객체를 활용하여 DataOutputStream 클래스의 dos 인스턴스를 생성합니다.
 
-				DataOutputStream dos = new DataOutputStream(out);
+				DataOutputStream dos1 = new DataOutputStream(out);
 
 // 문제-8) 원격 소켓(remote socket)에 데이터를 UTF-8 형식으로 보냅니다.
 
 // 메시지 : "서버에서 보내는 메시지입니다."
 
-				dos.writeUTF("서버에서 보내는 메시지입니다.");
+				dos1.writeUTF("서버에서 보내는 메시지입니다.");
 
 // 문제-9) 위에서 생성한 스트림(dos)과 소켓(socket) 자원을 반납구문을 finally 
 
 // 구문을 추가하여 finally 블럭으로 옮기도록(이관) 조치합니다.
 
-				dos.close();
+				dos1.close();
 
-				socket.close();
+				socket1.close();
 
 			} catch (IOException e) {
 

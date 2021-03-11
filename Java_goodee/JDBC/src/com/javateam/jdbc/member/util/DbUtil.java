@@ -85,64 +85,64 @@ public class DbUtil {
 	 */
 	
 	// 반환값이 없을 때 (void)
-	public static void close(Connection con, Statement stmt, ResultSet rs) {
-		
-		try {
-			if(rs != null) {
-				rs.close();
-				System.out.println("SQL 결과셋을 반납하였습니다.");
-			}// if(!rs.isClosed()) rs.close(); // (O)
-			// if(rs.isClosed() == false) rs.close(); // (O)
-			if(stmt != null) {
-				stmt.close();
-				System.out.println("SQL 처리 객체를 반납하였습니다.");
-			}
-			// if(stmt.isClose() == false) stmt.close(); // (O)
-			if(con != null) {
-				con.close();
-				System.out.println("DB 연결 객체를 반납하였습니다.");
-
-			}
-			// if(con.isClosed()==false) con.close(); // (O)
-		} catch (SQLException e) {
-			System.out.println("DB 자원 반납에 실패하였습니다.");
-			e.printStackTrace();
-			
-		}
-		
-	}
-		// 반환값 boolean 일 때
-//	public static boolean close(Connection con, Statement stmt, ResultSet rs) {
-//		
-//		boolean result = false;
+//	public static void close(Connection con, Statement stmt, ResultSet rs) {
 //		
 //		try {
 //			if(rs != null) {
 //				rs.close();
 //				System.out.println("SQL 결과셋을 반납하였습니다.");
-//				result = true;
-//			}
+//			}// if(!rs.isClosed()) rs.close(); // (O)
+//			// if(rs.isClosed() == false) rs.close(); // (O)
 //			if(stmt != null) {
 //				stmt.close();
 //				System.out.println("SQL 처리 객체를 반납하였습니다.");
-//				result = true;
 //			}
+//			// if(stmt.isClose() == false) stmt.close(); // (O)
 //			if(con != null) {
 //				con.close();
 //				System.out.println("DB 연결 객체를 반납하였습니다.");
-//				result = true;
 //
 //			}
 //			// if(con.isClosed()==false) con.close(); // (O)
 //		} catch (SQLException e) {
 //			System.out.println("DB 자원 반납에 실패하였습니다.");
 //			e.printStackTrace();
-//			result = false;
 //			
 //		}
 //		
-//		return result;
 //	}
+		// 반환값 boolean 일 때
+	public static boolean close(Connection con, Statement stmt, ResultSet rs) {
+		
+		boolean result = false;
+		
+		try {
+			if(rs != null) {
+				rs.close();
+				//System.out.println("SQL 결과셋을 반납하였습니다.");
+				result = true;
+			}
+			if(stmt != null) {
+				stmt.close();
+				//System.out.println("SQL 처리 객체를 반납하였습니다.");
+				result = true;
+			}
+			if(con != null) {
+				con.close();
+				//System.out.println("DB 연결 객체를 반납하였습니다.");
+				result = true;
+
+			}
+			// if(con.isClosed()==false) con.close(); // (O)
+		} catch (SQLException e) {
+			System.out.println("DB 자원 반납에 실패하였습니다.");
+			e.printStackTrace();
+			result = false;
+			
+		}
+		
+		return result;
+	}
 	
 		// 반환 값 String 일 때
 //		public static String close(Connection con, Statement stmt, ResultSet rs) {

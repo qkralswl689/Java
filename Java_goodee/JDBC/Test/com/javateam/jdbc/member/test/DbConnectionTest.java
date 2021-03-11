@@ -33,8 +33,8 @@ public class DbConnectionTest {
 		
 		//DbUtil.close(DbUtil.connect(), stmt, null); 
 		
-		// boolean result = DbUtil.close(DbUtil.connect(), stmt, null); // boolean
-		//System.out.println("반납 성공 여부 : " + result);
+		boolean result = DbUtil.close(DbUtil.connect(), stmt, null); // boolean
+		System.out.println("반납 성공 여부 : " + result);
 		
 //		String result = DbUtil.close(DbUtil.connect(), stmt, rs); // String
 //		System.out.println("반납 성공 여부(메세지) :\n " + result);

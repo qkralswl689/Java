@@ -1,8 +1,8 @@
-package com.javateam.jdbc.member.dao;
+package JDBC;
 
 import java.util.List;
 
-import com.javateam.jdbc.member.domain.MemberVo;
+import JDBC.MemberVo;
 
 /**
  * DAO (Data Access Object) <br>
