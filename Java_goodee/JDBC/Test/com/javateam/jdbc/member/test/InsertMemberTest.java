@@ -23,17 +23,17 @@ public class InsertMemberTest {
 		// 생성할 회원정보 생성 (MemberVO)
 		MemberVo member = new MemberVo();
 		
-		member.setMemberId("mingming");		
+		member.setMemberId("java5555");
 		member.setMemberPassword("1234");
-		member.setMemberNicname("만두");
-		member.setMemberName("박00");
-		member.setMemberGender('f');
-		member.setMemberEmail("skfksnsk@skfk.com");
+		member.setMemberNicname("구디샘");
+		member.setMemberName("홍길동");
+		member.setMemberGender('m');
+		member.setMemberEmail("abcd@abcd.com");
 		member.setMemberPhone("010-1234-5678");
-		member.setMemberBirth(Date.valueOf("1993-01-29"));
+		member.setMemberBirth(Date.valueOf("2016-02-05"));
 		member.setMemberZip("12345");
-		member.setMemberAddressBasic("부천시");
-		member.setMemberAddressDetail("현대홈타운");
+		member.setMemberAddressBasic("서울 금천 가산");
+		member.setMemberAddressDetail("구디아카데미");
 		
 		// InserMember 테스트(true/false)
 		String result = dao.insertMember(member) == true ? 

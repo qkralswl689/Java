@@ -1,0 +1,39 @@
+@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MemberVo other = (MemberVo) obj;
+		return Objects.equals(memberAddressBasic, other.memberAddressBasic)
+				&& Objects.equals(memberAddressDetail, other.memberAddressDetail)
+				&& Objects.equals(memberBirth, other.memberBirth) && Objects.equals(memberEmail, other.memberEmail)
+				&& memberGender == other.memberGender && Objects.equals(memberId, other.memberId)
+				&& Objects.equals(memberJoindate, other.memberJoindate) && Objects.equals(memberName, other.memberName)
+				&& Objects.equals(memberNicname, other.memberNicname)
+				&& Objects.equals(memberPassword, other.memberPassword)
+				&& Objects.equals(memberPhone, other.memberPhone) && memberZip == other.memberZip;
+	}
+	
+ @Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MemberVo other = (MemberVo) obj;
+		return Objects.equals(memberAddressBasic, other.memberAddressBasic)
+				&& Objects.equals(memberAddressDetail, other.memberAddressDetail)
+				&& Objects.equals(memberBirth, other.memberBirth) && Objects.equals(memberEmail, other.memberEmail)
+				&& memberGender == other.memberGender && Objects.equals(memberId, other.memberId)
+				&& Objects.equals(memberJoindate, other.memberJoindate) && Objects.equals(memberName, other.memberName)
+				&& Objects.equals(memberNicname, other.memberNicname)
+				&& Objects.equals(memberPassword, other.memberPassword)
+				&& Objects.equals(memberPhone, other.memberPhone) && Objects.equals(memberZip, other.memberZip);
+	}
+
+	

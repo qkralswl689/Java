@@ -163,7 +163,7 @@ public class MemberVo implements Serializable{
 	@Override
 	public String toString() {
 		return String.format(
-				"memberId=%s\n, memberPassword=%s\n, memberNicname=%s\n, memberName=%s\n, memberGender=%s\n, memberEmail=%s\n, memberPhone=%s\n, memberBirth=%s\n, memberZip=%s\n, memberAddressBasic=%s\n, memberAddressDetail=%s\n, memberJoindate=%s]",
+				"memberId=%s, memberPassword=%s, memberNicname=%s, memberName=%s, memberGender=%s, memberEmail=%s, memberPhone=%s, memberBirth=%s, memberZip=%s, memberAddressBasic=%s, memberAddressDetail=%s, memberJoindate=%s]",
 				memberId, memberPassword, memberNicname, memberName, memberGender, memberEmail, memberPhone,
 				memberBirth, memberZip, memberAddressBasic, memberAddressDetail, memberJoindate);
 	}
@@ -192,8 +192,10 @@ public class MemberVo implements Serializable{
 				&& Objects.equals(memberJoindate, other.memberJoindate) && Objects.equals(memberName, other.memberName)
 				&& Objects.equals(memberNicname, other.memberNicname)
 				&& Objects.equals(memberPassword, other.memberPassword)
-				&& Objects.equals(memberPhone, other.memberPhone) && memberZip == other.memberZip;
+				&& Objects.equals(memberPhone, other.memberPhone) && Objects.equals(memberZip, other.memberZip);
 	}
+
+	
 	
 	
 	
