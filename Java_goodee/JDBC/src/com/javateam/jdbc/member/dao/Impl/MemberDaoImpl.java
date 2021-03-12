@@ -5,8 +5,10 @@ package com.javateam.jdbc.member.dao.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import com.javateam.jdbc.member.dao.MemberDao;
@@ -109,8 +111,72 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public List<MemberVo> getAllMembers() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		// 리턴(반환값) 처리
+		List<MemberVo> members = new ArrayList<>(); // List 사용
+		
+		// 개별 회원정보 객체 선언
+		MemberVo member = null;
+		
+		// 실행 메서드명  
+		String methodName = new Exception().getStackTrace()[0].getMethodName();
+		
+		// DB 연결
+		Connection con = DbUtil.connect();
+		
+		// SQL 처리 객체
+		PreparedStatement pstmt = null;
+		
+		// SQL 결과셋 객체(DQL:select)
+		ResultSet rs = null;
+		
+		// SQL 구문
+		String sql = "SELECT * FRom member";
+		
+		try {
+			// SQL 처리
+			pstmt = con.prepareStatement(sql);
+			
+			// SQL 결과셋 객체 생성
+			rs = pstmt.executeQuery();
+			
+			// next() : 결과셋에서 다음 행을 조회하는 방식(iterator)
+ 			while(rs.next()) { 
+ 				
+ 				// 개별 회원정보 생성
+ 				// 주의) VO 객체 이 구문에서 선언  => 특정 개별 회원들만 여러행 출력된다 (안좋다)
+ 				// => 대책 : VO 객체 외부에서 선언한다 -> 리턴처리문 아래에 선언(MemberVo member = null;)
+ 				// MemberVo member = new MemberVo(); //=> 한명이 여러번 나오는 버그 발생
+ 				member = new MemberVo(); // (O)
+ 				
+ 				// SQL 결과셋 -> VO에  이관
+ 				member.setMemberId(rs.getString("member_Id"));
+ 				member.setMemberPassword(rs.getString("member_Password"));
+ 				member.setMemberNicname(rs.getString("member_Nickname"));
+ 				member.setMemberName(rs.getString("member_Name"));
+ 				member.setMemberGender(rs.getString("member_Gender").charAt(0)); // char로 변환
+ 				member.setMemberEmail(rs.getString("member_Email"));
+ 				member.setMemberPhone(rs.getString("member_Phone"));
+ 				member.setMemberBirth(rs.getDate("member_Birth"));
+ 				member.setMemberZip(rs.getString("member_Zip"));
+ 				member.setMemberAddressBasic(rs.getString("member_Address_Basic"));
+ 				member.setMemberAddressDetail(rs.getString("member_Address_Detail"));
+ 				member.setMemberJoindate(rs.getDate("member_JoinDate"));
+ 				
+ 				// VO -> List 로 이관(add) : 개별 회원정보 추가
+ 				members.add(member);
+				
+			}
+			// SQL 실행, 예외처리
+		}catch(SQLException e) {
+			System.out.println(methodName + " : " + e.getMessage());
+			
+		} finally {
+			// 자원 반납
+			DbUtil.close(con, pstmt, rs);		
+		
+	   } // 리턴(반환)
+		return members ;
 	}
 
 	@Override
@@ -124,6 +190,9 @@ public class MemberDaoImpl implements MemberDao {
 		// 리턴 처리
 		boolean result = false;
 		
+		// 실행 메서드명
+		String methodName = new Exception().getStackTrace()[0].getMethodName();
+		
 		// DB연결
 		Connection con = DbUtil.connect();
 		
@@ -131,23 +200,40 @@ public class MemberDaoImpl implements MemberDao {
 		PreparedStatement pstmt = null;
 		
 		// SQL 구문
-		String sql = "UPDATE member SET "
-					+ "member_password=?,member_nickname = ?,member_birth=?,"
-					+ "member_address_basic=?,member_address_detail=?"
-					+ "WHERE MEMBER_ID='mingming'";
+		
+		// 1) 
+//		String sql = "UPDATE member SET "
+//					+ "member_password=?,member_nickname = ?,member_birth=?,"
+//					+ "member_address_basic=?,member_address_detail=? "
+//					+ "WHERE MEMBER_ID= ? ";
+		
+		// 2)
+		StringBuilder sql = new StringBuilder();
+		sql.append("UPDATE member SET ");
+		sql.append("member_Password = ?,");
+		sql.append("member_nickname = ?,");
+		sql.append("member_birth=?,");
+		sql.append("member_address_basic=?,");
+		sql.append("member_address_detail=? ");
+		sql.append("WHERE MEMBER_ID=?");
+		
 		// SQL, 인자(선) 처리
 		
 		try {
-			pstmt = con.prepareStatement(sql);
+			// 1) pstmt = con.prepareStatement(sql);
+			
+			// 2) sql.toString : StringBulder를 변환해서 사용
+			pstmt = con.prepareStatement(sql.toString());
 			
 			pstmt.setString(1, member.getMemberPassword());
 			pstmt.setString(2, member.getMemberNicname());
 			pstmt.setDate(3, member.getMemberBirth());
 			pstmt.setString(4, member.getMemberAddressBasic());
 			pstmt.setString(5, member.getMemberAddressDetail());
-
+			pstmt.setString(6, member.getMemberId());
 			// SQL 실행, 리턴값 처리, 예외처리
 			if(pstmt.executeUpdate()==1) {
+		//	pstmt.executeUpdate() > 2 ) { // 여러명 정보 수정시 조건문예시
 				System.out.println("회원정보 수정에 성공하였습니다.");
 				result = true;
 			}else {
@@ -155,8 +241,8 @@ public class MemberDaoImpl implements MemberDao {
 			}
 				
 		} catch (SQLException e) {
-			System.err.println(" 회원정보 저장시 예외가 발생하였습니다.");
-			System.err.println(e.getMessage());
+			System.err.println(methodName + ": " +"회원정보 저장시 예외가 발생하였습니다.");
+			System.err.println(methodName + " : " + e.getMessage());
 			e.printStackTrace();
 		}finally {
 			// 자원 반납
@@ -167,7 +253,24 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public boolean deleteMember(String memberId) {
-		// TODO Auto-generated method stub
+		
+				// 리턴(반환값) 처리
+		 
+				// 실행 메서드명  
+				
+				// DB 연결
+				
+				// SQL 처리 객체
+				
+				// SQL 구문
+				
+				// SQL, 인자 (선)처리
+				
+				// SQL 실행, 예외처리
+				
+				// 자원 반납
+				
+				// 리턴(반환)
 		return false;
 	}
 

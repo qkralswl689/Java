@@ -6,6 +6,7 @@ INSERT INTO member VALUES
 '010-1234-5678', '1990-01-01', '12345','서울 금천구 가산',
 '대륭 3차 11층', sysdate);
  
+
 -- 개별 회원정보 조회
 SELECT * FROM member WHERE member_id='java1234';
  

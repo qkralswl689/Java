@@ -23,11 +23,13 @@ public class UpdateMemberTest {
 		// 수정할 외원정보 생성(MemberVO)
 		MemberVo member = new MemberVo();
 		
+	
 		member.setMemberPassword("11115");
 		member.setMemberNicname("메니");
 		member.setMemberBirth(Date.valueOf("1991-07-04"));
 		member.setMemberAddressBasic("서울특별시");
 		member.setMemberAddressDetail("타워펠리스");
+		member.setMemberId("hyun");
 		
 		// UpdateMember 테스트(true/false)
 		String result = dao.updateMember(member) == true ?
