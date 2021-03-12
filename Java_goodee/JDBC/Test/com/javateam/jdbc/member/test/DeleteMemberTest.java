@@ -24,7 +24,7 @@ public class DeleteMemberTest {
 		
 
 		// UpdateMember 테스트(true/false)
-		String result = dao.deleteMember("java1234") == true ? 
+		String result = dao.deleteMember("java12345") == true ? 
 						"삭제 성공" : "삭제 실패";
 		System.out.println("DeleteMember 테스트 결과 " + result);
 	}

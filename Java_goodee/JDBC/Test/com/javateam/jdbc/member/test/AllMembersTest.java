@@ -34,7 +34,7 @@ public class AllMembersTest {
 		MemberDao dao = MemberDaoImpl.getInstance();
 		
 		// 인원수 확인
-		System.out.println("인원수 확인 : " + (dao.getAllMembers().size()==7 ? true: false));
+		System.out.println("인원수 확인 : " + (dao.getAllMembers().size()==8 ? true: false));
 		
 		// 테스트 케이스 점검 사항
 		// 중복행 출력 여부 점검
@@ -52,9 +52,7 @@ public class AllMembersTest {
 		for(int i=0; i<list.size();i++) {
 			String id = list.get(i).getMemberId(); 
 				System.out.println(id + ":" + getCountByWord(ids,id));
-			}
-			
-		
+		}
 	}
 
 }

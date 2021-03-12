@@ -38,9 +38,11 @@ public class GetMemberTest {
 		// 날짜 입력
 		member.setMemberJoindate(Date.valueOf("2021-03-12"));
 		
+		// 정보 출력
 		System.out.println(member);
 		System.out.println(dao.getMember("java5555"));
 		
+		// 해쉬코드 비교
 		System.out.println(member.hashCode());
 		System.out.println(dao.getMember("java5555").hashCode());
 		
