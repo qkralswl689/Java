@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 // MemberVO : 데이터 전송 가능하게 만듬
-public class MemberVO {
+public class MemberVO  {
 
 	// 멤버 필드
 	/** 회원 아이디 */

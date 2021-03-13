@@ -1,11 +1,8 @@
 package JDBC;
 
+import java.sql.Date;
 import JDBC.MemberDAOImpl;
 
-import java.sql.Date;
-
-import JDBC.MemberDAO;
-import JDBC.MemberVO;
 public class InsertTest {
 
 	public static void main(String[] args) {

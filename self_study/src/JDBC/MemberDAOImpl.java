@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.javateam.jdbc.member.dao.Impl.MemberDaoImpl;
+
 // MemberDAO 구현클래스
 public class MemberDAOImpl implements MemberDAO {
-
 	
-
 	// DAO 객체 생성
 	private static MemberDAOImpl instance = null;
 	
@@ -18,11 +18,14 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	// 싱클톤 객체 생성 메서드
 	public static final MemberDAOImpl getInstance() {
+		// final : 오버라이드 금지
+		
 		if(instance == null) {
 			instance = new MemberDAOImpl();
 		}
-		return instance;
+		 return instance;
 	}
+	
 	@Override
 	public boolean insertMember(MemberVO member) {
 		
