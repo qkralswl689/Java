@@ -175,23 +175,43 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public boolean deleteMember(String memberId) {
 		// 리턴(반환값) 처리
+		 boolean result = false;
 		 
-				// 실행 메서드명  
-				
-				// DB 연결
-				
-				// SQL 처리 객체
-				
-				// SQL 구문
-				
-				// SQL, 인자 (선)처리
-				
-				// SQL 실행, 예외처리
-				
-				// 자원 반납
-				
-				// 리턴(반환)		
-		return false;
+		// 실행 메서드명  
+		 String methodName = new Exception().getStackTrace()[0].getMethodName();
+		
+		// DB 연결
+		Connection con = DBUtil.connect();
+		
+		// SQL 처리 객체
+		PreparedStatement pstmt = null;
+		
+		// SQL 구문
+		String sql = "Delete STUDYJDBC WHERE member_id = ?";
+		
+		// SQL, 인자 (선)처리
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, memberId);
+			if(pstmt.executeUpdate()==1) {
+				System.out.println("삭제 성공");
+				result = true;
+			}else {
+				System.out.println("삭제 실패");
+			}
+							
+			// SQL 실행, 예외처리
+		} catch (SQLException e) {
+			System.out.println("삭제 처리시 예외발생");
+			System.out.println(methodName + " : " + e.getMessage());
+			e.printStackTrace();
+			// 자원 반납
+		} finally {
+			DBUtil.cloese(con, pstmt, null);	
+		
+		}// 리턴(반환)		
+		return result;
 	}
 
 	
