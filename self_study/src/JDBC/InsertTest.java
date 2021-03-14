@@ -10,17 +10,17 @@ public class InsertTest {
 		
 		MemberVO member = new MemberVO();
 
-		member.setMemberId("hyun");
+		member.setMemberId("ming");
 		member.setMemberPassword("1234");
-		member.setMemberNickname("혀니");
-		member.setMemberName("배현");
-		member.setMemberGender('m');
+		member.setMemberNickname("멩");
+		member.setMemberName("박미니");
+		member.setMemberGender('f');
 		member.setMemberEmail("abcd@abcd.com");
 		member.setMemberPhone("010-1234-5678");
-		member.setMemberBirth(Date.valueOf("1991-01-04"));
+		member.setMemberBirth(Date.valueOf("1993-01-29"));
 		member.setMemberZip("12345");
-		member.setMemberAddressBasic("서울");
-		member.setMemberAddressDetail("황제빌라");
+		member.setMemberAddressBasic("부천");
+		member.setMemberAddressDetail("현대홈타운");
 		
 		String result = dao.insertMember(member) ==true ?
 				"저장 성공" : "저장 실패";

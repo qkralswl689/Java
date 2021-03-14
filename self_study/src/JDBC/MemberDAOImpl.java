@@ -2,7 +2,9 @@ package JDBC;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -77,23 +79,66 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public List<MemberVO> getAllMembers() {
 		// 리턴(반환값) 처리
+		 List<MemberVO> members = new ArrayList<>();
 		 
-				// 실행 메서드명  
-				
-				// DB 연결
-				
-				// SQL 처리 객체
-				
-				// SQL 구문
-				
-				// SQL, 인자 (선)처리
-				
-				// SQL 실행, 예외처리
-				
-				// 자원 반납
-				
-				// 리턴(반환)
-		return null;
+		// 개별 회원정보 객체 선언
+		 MemberVO member = new MemberVO();
+		 
+		// 실행 메서드명  
+		String methodName = new Exception().getStackTrace()[0].getMethodName();
+		
+		// DB 연결
+		Connection con = DBUtil.connect();
+		
+		// SQL 처리 객체
+		PreparedStatement pstmt = null;
+		
+		// SQL 결과셋 객체(DQL:select)
+		ResultSet rs = null;
+		
+		// SQL 구문
+		String sql = "SELECT * FRom STUDYJDBC";
+		
+		// SQL 처리
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			// SQL 결과셋 객체 생성
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				// 개별 회원정보 생성
+				member = new MemberVO();
+				member.setMemberId(rs.getString("member_Id"));
+ 				member.setMemberPassword(rs.getString("member_Password"));
+ 				member.setMemberNickname(rs.getString("member_Nickname"));
+ 				member.setMemberName(rs.getString("member_Name"));
+ 				member.setMemberGender(rs.getString("member_Gender").charAt(0)); // char로 변환
+ 				member.setMemberEmail(rs.getString("member_Email"));
+ 				member.setMemberPhone(rs.getString("member_Phone"));
+ 				member.setMemberBirth(rs.getDate("member_Birth"));
+ 				member.setMemberZip(rs.getString("member_Zip"));
+ 				member.setMemberAddressBasic(rs.getString("member_Address_Basic"));
+ 				member.setMemberAddressDetail(rs.getString("member_Address_Detail"));
+ 				member.setMemberJoindate(rs.getDate("member_JoinDate"));
+ 			
+ 				// VO -> List 로 이관(add) : 개별 회원정보 추가
+ 				
+ 				members.add(member);
+ 				
+			}
+			// SQL 실행, 예외처리
+		} catch (SQLException e) {
+			System.out.println(methodName + " : " + e.getMessage());
+		
+			// 자원 반납
+		}finally {
+			DBUtil.cloese(con, pstmt, rs);
+		}	
+		
+		// 리턴(반환)
+		return members;
 	}
 
 	@Override
