@@ -26,3 +26,7 @@ DELETE member WHERE member_id='java1234';
 
 -- 전체 회원정보 삭제
 DELETE member;
+
+-- 회원 여부 점검
+-- SELECT * FROM member WHERE member_id = 'java';
+SELECT count(*) FROM member WHERE member_id = 'java';

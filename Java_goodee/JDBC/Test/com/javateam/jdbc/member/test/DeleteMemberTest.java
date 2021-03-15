@@ -1,13 +1,11 @@
 package com.javateam.jdbc.member.test;
 
-import java.sql.Date;
 
 import com.javateam.jdbc.member.dao.MemberDao;
 import com.javateam.jdbc.member.dao.Impl.MemberDaoImpl;
-import com.javateam.jdbc.member.domain.MemberVo;
 
 /**
- * DeleteMember 메서드 단위 테스트(Unit Test Case) <br>
+ * deleteMember 단위 테스트 케이스(Unit Test Case) <br>
  * : 회원정보 삭제 테스트<br><br>
  * 
  * @author mingki
@@ -19,7 +17,7 @@ public class DeleteMemberTest {
 
 	public static void main(String[] args) {
 		
-		// DAO 객체 생성
+		// DAO 객체 생성(싱글톤 객체)
 		MemberDao dao = MemberDaoImpl.getInstance();
 		
 

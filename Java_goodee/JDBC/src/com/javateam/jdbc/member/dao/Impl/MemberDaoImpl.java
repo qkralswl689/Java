@@ -309,6 +309,7 @@ public class MemberDaoImpl implements MemberDao {
 		boolean result = false;
 		
 		// 실행 메서드명  
+		// getStackTrace()[0] : 배열의 0번째 요소
 		String MethodName = new Exception().getStackTrace()[0].getMethodName();
 		
 		// DB 연결
@@ -330,6 +331,7 @@ public class MemberDaoImpl implements MemberDao {
 				result = true;
 			}else {
 				System.out.println("회원정보 삭제에 실패하였습니다");
+				// result = false;
 			}
 		
 			// SQL 실행, 예외처리
@@ -344,5 +346,115 @@ public class MemberDaoImpl implements MemberDao {
 		// 리턴(반환)
 		return result;
 	}
+
+	@Override
+	public boolean isMemberByMemberId(String memberId) {
+		
+		// 리턴(반환값) 처리
+		boolean result = false;
+		
+		// 실행 메서드명
+		String methodName = new Exception().getStackTrace()[0].getMethodName();
+		
+		// DB 연결
+		Connection con = DbUtil.connect();
+		
+		// SQL 처리 객체
+		PreparedStatement pstmt = null;
+		
+		// 결과셋 객체
+		ResultSet rs = null;
+		
+		// SQL 구문
+		// String sql = "SELECT * FROM member WHERE member_id =?"; // 1)
+		// String sql = "SELECT count(1) FROM member WHERE member_id =?"; // (O)
+		// 참고 : https://hue9010.github.io/db/select_count/
+		String sql = "SELECT count(*) FROM member WHERE member_id =?";
+
+		// SQL, 인자(선)처리
+		try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, memberId);
+			
+			// SQL 실행, 예외처리
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				// rs.getString("member_Id"); // 1)
+				
+				// 1 : 존재, 0 : 없음
+				result = rs.getInt(1) == 1 ? true : false;
+				// result = true; // 1)
+			}				
+			
+		} catch (SQLException e) {
+			System.out.println(methodName + " : " + e.getMessage());
+		
+			// 자원반납
+		}finally {
+			DbUtil.close(con, pstmt, rs);
+		}
+			
+		// 리턴(반환)
+		
+		return result;
+	}
+
+	@Override
+	public String isMember(String memberId, String memberPassword) {
+		// 리턴(반환값) 처리
+		 
+		// 실행 메서드명  
+		
+		// DB 연결
+		
+		// SQL 처리 객체
+
+		// 결과셋 객체
+		
+		// SQL 구문
+		
+		// SQL, 인자 (선)처리
+		
+		// SQL 실행, 예외처리
+		// hint ) isMember(String memberId)활용
+		// 다중 조건 활용
+		// 1) 회원 여부 점검
+		// 1-1) 회원 여부 일치 => 패스워드 존재여부 점검
+		// 2) 패스워드 일치 여부 점검
+		// 2-1) 패스워드 일치할 경우 메시징
+		// 2-2) 패스워드 불일치할 경우 메시징
+		// 1-2) 회원 여부 불일치 => 메시징처리 
+		
+		
+		// 자원 반납
+		
+		// 리턴(반환)
+		
+		
+		return null;
+	}
+	
+	// 리턴(반환값) 처리
+	 
+	// 실행 메서드명  
+	
+	// DB 연결
+	
+	// SQL 처리 객체
+
+	// 결과셋 객체
+	
+	// SQL 구문
+	
+	// SQL, 인자 (선)처리
+	
+	// SQL 실행, 예외처리
+	
+	// 자원 반납
+	
+	// 리턴(반환)
+	
 
 }
