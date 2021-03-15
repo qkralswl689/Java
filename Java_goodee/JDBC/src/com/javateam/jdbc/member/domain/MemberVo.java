@@ -163,7 +163,7 @@ public class MemberVo implements Serializable{
 	@Override
 	public String toString() {
 		return String.format(
-				"memberId=%s%n, memberPassword=%s%n, memberNicname=%s%n, memberName=%s%n, memberGender=%s%n, memberEmail=%s%n, memberPhone=%s%n, memberBirth=%s%n, memberZip=%s%n, memberAddressBasic=%s%n, memberAddressDetail=%s%n, memberJoindate=%s]",
+				"memberId=%s, memberPassword=%s, memberNicname=%s, memberName=%s, memberGender=%s, memberEmail=%s, memberPhone=%s, memberBirth=%s, memberZip=%s, memberAddressBasic=%s, memberAddressDetail=%s, memberJoindate=%s%n]",
 				memberId, memberPassword, memberNicname, memberName, memberGender, memberEmail, memberPhone,
 				memberBirth, memberZip, memberAddressBasic, memberAddressDetail, memberJoindate);
 	}

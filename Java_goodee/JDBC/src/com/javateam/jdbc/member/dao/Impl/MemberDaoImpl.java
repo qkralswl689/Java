@@ -507,17 +507,34 @@ public class MemberDaoImpl implements MemberDao {
 		// SQL, 인자 (선)처리
 		try {
 			pstmt = con.prepareStatement(sql);
+
+			pstmt.setInt(1,page);
+			pstmt.setInt(2,limit);
 			
+			// SQL 결과셋 객체 생성
 			rs = pstmt.executeQuery();
-			
+		
 			while(rs.next()) {
-				// SQL 실행, 예외처리
-				member = new MemberVo();
 			
-				pstmt.setInt(1,page);
-				pstmt.setInt(2,limit);
+				member = new MemberVo(); 
 				
-				members.add(member);
+				// SQL 결과셋 -> VO에  이관 				
+ 				member.setMemberId(rs.getString("member_Id"));
+ 				member.setMemberPassword(rs.getString("member_Password"));
+ 				member.setMemberNicname(rs.getString("member_Nickname"));
+ 				member.setMemberName(rs.getString("member_Name"));
+ 				member.setMemberGender(rs.getString("member_Gender").charAt(0)); // char로 변환
+ 				member.setMemberEmail(rs.getString("member_Email"));
+ 				member.setMemberPhone(rs.getString("member_Phone"));
+ 				member.setMemberBirth(rs.getDate("member_Birth"));
+ 				member.setMemberZip(rs.getString("member_Zip"));
+ 				member.setMemberAddressBasic(rs.getString("member_Address_Basic"));
+ 				member.setMemberAddressDetail(rs.getString("member_Address_Detail"));
+ 				member.setMemberJoindate(rs.getDate("member_JoinDate"));
+ 				
+ 				// VO -> List 로 이관(add) : 개별 회원정보 추가
+ 				members.add(member);
+				
 			}
 			
 		} catch (SQLException e) {
