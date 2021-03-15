@@ -62,7 +62,7 @@ public interface MemberDao {
 	 * @param memberId 회원 아이디
 	 * @return 회원(존쟤) 여부 
 	 */
-	public boolean isMemberByMemberId(String memberId);
+	public boolean isMember(String memberId);
 	
 	/**
 	 * 회원 여부(인증) 점검 <br><br>
@@ -79,4 +79,13 @@ public interface MemberDao {
 	 * @return 인증메시지
 	 */
 	public String isMember(String memberId, String memberPassword);
+	
+	/**
+	 * 페이징에 의한 회원정보들 조회(검색)<br><br>
+	 * 
+	 * @param page 조회할 페이지 번호
+	 * @param limit 페이지 당 출력행 수
+	 * return 회원정보 리스트 (목록)
+	 */
+	public List<MemberVo> getMembersByPaging(int page, int limit);
 }

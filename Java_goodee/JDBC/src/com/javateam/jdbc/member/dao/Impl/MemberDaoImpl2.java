@@ -25,22 +25,22 @@ import com.javateam.jdbc.member.util.DbUtil;
  * @author mingki
  *
  */
-public class MemberDaoImpl implements MemberDao {
+public class MemberDaoImpl2 implements MemberDao {
 	
 	/** DAO 객체 : 싱클턴(singleton) 생성 패턴 적용*/
-	private static MemberDaoImpl instance = null;
-	private MemberDaoImpl() {}
+	private static MemberDaoImpl2 instance = null;
+	private MemberDaoImpl2() {}
 	
 	/**
 	 * 싱글턴 객체(DAO singleton object) 생성 메서드 
 	 * 
 	 * @return DAO 객체
 	 */
-	public static final MemberDaoImpl getInstance() {
+	public static final MemberDaoImpl2 getInstance() {
 		// final : 오버라이드 금지
 		
 		if(instance == null) {
-			instance = new MemberDaoImpl();
+			instance = new MemberDaoImpl2();
 		}
 		 return instance;
 	}
@@ -483,52 +483,25 @@ public class MemberDaoImpl implements MemberDao {
 	public List<MemberVo> getMembersByPaging(int page, int limit) {
 
 		// 리턴(반환값) 처리
-		List<MemberVo> members = new ArrayList<>();
-		
-		// 개별 회원정보 객체 선언
-		MemberVo member = null;
-		
+		 
 		// 실행 메서드명  
-		String methodName = new Exception().getStackTrace()[0].getMethodName();
 		
 		// DB 연결
-		Connection con = DbUtil.connect();
 		
 		// SQL 처리 객체
-		PreparedStatement pstmt = null;
-		
+
 		// 결과셋 객체
-		ResultSet rs = null;
 		
 		// SQL 구문
-		String sql ="SELECT * FROM (SELECT ROWNUM, m.*, FLOOR((ROWNUM - 1) / ? + 1) page "
-				+ "FROM ( SELECT * FROM member ORDER BY member_id ASC ) m ) WHERE page = ? ";
 		
 		// SQL, 인자 (선)처리
-		try {
-			pstmt = con.prepareStatement(sql);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				// SQL 실행, 예외처리
-				member = new MemberVo();
-			
-				pstmt.setInt(1,page);
-				pstmt.setInt(2,limit);
-				
-				members.add(member);
-			}
-			
-		} catch (SQLException e) {
-			System.out.println(methodName + " : " + e.getMessage());
-			
-			// 자원 반납
-		}finally {
-			DbUtil.close(con, pstmt, rs);
-		}		
+		
+		// SQL 실행, 예외처리
+		
+		// 자원 반납
+		
 		// 리턴(반환)
-		return members;
+		return null;
 	}
 	
 	

@@ -30,3 +30,18 @@ DELETE member;
 -- 회원 여부 점검
 -- SELECT * FROM member WHERE member_id = 'java';
 SELECT count(*) FROM member WHERE member_id = 'java';
+
+-- 회원 정보 조회
+SELECT count(*) FROM member WHERE member_id = 'java' AND member_Password = '1234';
+
+--SQL 페이징
+SELECT *  
+FROM (SELECT ROWNUM,  
+             m.*,  
+             FLOOR((ROWNUM - 1) / 10 + 1) page  
+      FROM (
+             SELECT * FROM member  
+             ORDER BY member_id ASC
+           ) m  
+      )  
+WHERE page = 1;

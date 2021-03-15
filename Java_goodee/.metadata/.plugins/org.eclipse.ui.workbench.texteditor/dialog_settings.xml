@@ -6,8 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="%s%n"/>
+		<item key="selection" value="String"/>
 		<list key="findhistory">
+			<item value="String"/>
+			<item value="rs"/>
+			<item value="memberId"/>
+			<item value="memberID"/>
+			<item value=" getMember"/>
 			<item value="%s"/>
 			<item value="Instance"/>
 			<item value="d"/>
@@ -18,21 +23,16 @@
 			<item value="output"/>
 			<item value="out"/>
 			<item value="8"/>
-			<item value="U"/>
-			<item value="utf"/>
-			<item value="uf"/>
-			<item value="socket"/>
-			<item value="Out"/>
 		</list>
 		<list key="replacehistory">
 			<item value="%s%n"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="396"/>
-		<item key="DIALOG_Y_ORIGIN" value="397"/>
-		<item key="DIALOG_WIDTH" value="288"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_X_ORIGIN" value="1116"/>
+		<item key="DIALOG_Y_ORIGIN" value="324"/>
+		<item key="DIALOG_WIDTH" value="340"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕"/>
 	</section>
 </section>
