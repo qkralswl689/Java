@@ -501,15 +501,41 @@ public class MemberDaoImpl implements MemberDao {
 		ResultSet rs = null;
 		
 		// SQL 구문
-		String sql ="SELECT * FROM (SELECT ROWNUM, m.*, FLOOR((ROWNUM - 1) / ? + 1) page "
-				+ "FROM ( SELECT * FROM member ORDER BY member_id ASC ) m ) WHERE page = ? ";
+		// 1)
+//		String sql = "SELECT * " + 
+//		 "FROM (SELECT ROWNUM, " + 
+//		 "             m.*, " + 
+//		 "             FLOOR((ROWNUM - 1) / ? + 1) page " + 
+//		 "      FROM (" + 
+//		 "             SELECT * FROM member " + 
+//		 "             ORDER BY member_id ASC " + 
+//		 "           ) m " + 
+//		 "      ) " + 
+//		 "WHERE page = ?";
+//		
+		// 2) 
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT * ") 
+		  .append("FROM (SELECT ROWNUM,") 
+		  .append("             m.*,") 
+		  .append("             FLOOR((ROWNUM - 1) / ? + 1) page ") 
+		  .append("      FROM ( ") 
+		  .append("             SELECT * FROM member ") 
+		  .append("             ORDER BY member_id ASC ") 
+		  .append("           ) m ") 
+		  .append("      ) ") 
+		  .append("WHERE page = ?");
 		
 		// SQL, 인자 (선)처리
 		try {
-			pstmt = con.prepareStatement(sql);
-
-			pstmt.setInt(1,page);
-			pstmt.setInt(2,limit);
+			// pstmt = con.prepareStatement(sql); // 1)
+			pstmt = con.prepareStatement(sb.toString()); // 2)
+			// 내가 작성한것
+//			pstmt.setInt(1,page);
+//			pstmt.setInt(2,limit);
+			
+			pstmt.setInt(1, limit); // 한 페이지당 출력 인원 수 
+			pstmt.setInt(2, page); // 현재 페이지
 			
 			// SQL 결과셋 객체 생성
 			rs = pstmt.executeQuery();
@@ -546,6 +572,130 @@ public class MemberDaoImpl implements MemberDao {
 		}		
 		// 리턴(반환)
 		return members;
+	}
+
+	@Override
+	public boolean isEnableEmail(String memberEmail) {
+
+		// 리턴(반환값) 처리
+		 boolean result = false;
+		 
+		// 실행 메서드명  
+		String methodName = new Exception().getStackTrace()[0].getMethodName();
+		
+		// DB 연결
+		Connection con = DbUtil.connect();
+		
+		// SQL 처리 객체
+		PreparedStatement pstmt = null;
+		
+		// 결과셋 객체 (DOL : select)
+		ResultSet rs = null;
+		
+		// SQL 구문
+		// 내가 작성한거
+//		String sql = "SELECT count(*) FROM member " + 
+//				"WHERE member_email = ? ";
+		
+		// 1) 
+//		String sql = "SELECT DECODE(count(*), 0, 'true', 1, 'false') as email_flag "
+//				+ "FROM member " 
+//				+ "WHERE member_email = ? ";
+		
+		// 2) 
+		String sql = "SELECT count(*) FROM member " + 
+		"WHERE member_email = ? ";
+		
+		// SQL, 인자 (선)처리
+		try {
+			pstmt = con.prepareStatement(sql);
+			 pstmt.setString(1, memberEmail);
+			// SQL 결과셋 객체 생성
+			 rs = pstmt.executeQuery();
+			// SQL 실행, 예외처리
+			 
+			 // 1)
+//			 if(rs.next()) {
+//				 // boolean으로 형변환
+//				 // result = Boolean.valueOf(rs.getString(1)); //(O)
+//				 // result = new Boolean(rs.getString(1)); // (O)
+//				 result = new Boolean(rs.getString("email_flag"));
+//			 }
+			 // 2)
+			 if(rs.next()) {
+				 result = rs.getInt(1) == 1 ? false : true;
+			 }
+			 
+			 // 내가 작성한 코드
+//			 while(rs.next()) {				 
+//				 result = rs.getBoolean(1)== false ? false:true;				 
+//			 }
+			
+		} catch (SQLException e) {
+			
+			System.out.println(methodName + " : " + e.getMessage());
+			// 자원 반납
+		}finally {
+			DbUtil.close(con, pstmt, rs);
+			
+		}
+		// 리턴(반환)
+		return result;
+	}
+
+	@Override
+	public boolean isEnableEmail(String memberId, String memberEmail) {
+		// 리턴(반환값) 처리
+		boolean result = false;
+		 
+		// 실행 메서드명  
+		String methodName = new Exception().getStackTrace()[0].getMethodName();
+
+		// DB 연결
+		Connection con = DbUtil.connect();
+
+		// SQL 처리 객체
+		PreparedStatement pstmt = null;
+
+		// 결과셋 객체 (DOL : select)
+		ResultSet rs = null;
+
+		// SQL 구문
+		// 내가 작성한거
+		String sql = "SELECT count(*) FROM member " + 
+				"WHERE member_id != ? AND member_email = ? ";
+
+//		String sql = "SELECT DECODE(count(*), 0, 'true', 1, 'false') as email_flag "
+//		+ "FROM member " 
+//		+ "WHERE memberid != ? AND member_email = ? ";
+//		
+		// SQL, 인자 (선)처리
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,memberId);
+			pstmt.setString(2, memberEmail);
+
+			// SQL 결과셋 객체 생성
+			rs = pstmt.executeQuery();
+			
+			// SQL 실행, 예외처리	
+			if(rs.next()) {
+				result = rs.getInt(1) == 0 ? true : false;
+			
+			}else {
+				result = false;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(methodName + " : " + e.getMessage());
+			// 자원 반납
+		}finally {
+			DbUtil.close(con, pstmt, rs);
+			
+		}
+
+		// 리턴(반환)
+		return result;
 	}
 	
 	

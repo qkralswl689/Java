@@ -1,1 +1,5 @@
 com.javateam.jdbc.member.dao
+com.javateam.jdbc.member.dao.Impl
+com.javateam.jdbc.member.domain
+com.javateam.jdbc.member.test
+com.javateam.jdbc.member.util

@@ -144,6 +144,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberVO getMember(String memberId) {
 		// 리턴(반환값) 처리
+		
 		 
 				// 실행 메서드명  
 				
@@ -257,6 +258,26 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		}// 리턴(반환)		
 		return result;
+	}
+
+	@Override
+	public boolean isMember(String memberId) {
+		return false;
+	}
+
+	@Override
+	public String isMember(String memberId, String memberPassword) {
+		return null;
+	}
+
+	@Override
+	public List<MemberVO> getMembersByPaging(int page, int limit) {
+		return null;
+	}
+
+	@Override
+	public boolean isEnableEmail(String memberEmail) {
+		return false;
 	}
 
 	

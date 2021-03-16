@@ -88,4 +88,24 @@ public interface MemberDao {
 	 * return 회원정보 리스트 (목록)
 	 */
 	public List<MemberVo> getMembersByPaging(int page, int limit);
+	
+	/**
+	 * 이메일 중복 점검<br><br>
+	 * : 사용 가능한 이메일 여부 점검<br><br>
+	 * : ex) 회원가입시 이메일 중복 점검 <br>
+	 * : 이메일 용도 &rarr; 이이디/비밀번호 분실시 검색 활용<br><br>
+	 * @param memberEmail 이메일
+	 * @return 가용 이메일 여부
+	 */
+	public boolean isEnableEmail(String memberEmail);
+
+	/**
+	 * 이메일 중복 점검<br><br>
+	 * : 사용 가능한 이메일 여부 점검<br><br>
+	 * : ex) 회원 정보 "수정(갱신)"시  이메일 중복 점검 <br>
+	 * : 이메일 용도 &rarr; 이이디/비밀번호 분실시 검색 활용<br><br>
+	 * @param memberEmail 이메일
+	 * @return 가용 이메일 여부
+	 */
+	public boolean isEnableEmail(String memberId,String memberEmail);
 }
