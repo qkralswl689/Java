@@ -25,6 +25,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\git_ming\Java\Java_goodee\JDBC\doc"/>
+			<item value="C:\Users\82104\Desktop\git_ming\Java\Java_goodee\JDBC\doc"/>
 			<item value="D:\git_ming\CodeUp\CodeUp-main"/>
 			<item value="D:\git_ming\CodeUp\src"/>
 			<item value="D:\git_ming\CodeUp"/>

@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="중복"/>
 		<list key="findhistory">
+			<item value="중복"/>
+			<item value=" getMe"/>
 			<item value="%n"/>
 			<item value="String"/>
 			<item value="rs"/>
@@ -21,8 +23,6 @@
 			<item value="대기"/>
 			<item value="utf-8"/>
 			<item value="data"/>
-			<item value="output"/>
-			<item value="out"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
