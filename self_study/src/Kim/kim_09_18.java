@@ -51,7 +51,22 @@ public class kim_09_18 {
 		400 390 385 1175		
 		*/		
 		int[][] score = {{90,80,70},{95,85,75},{70,80,75},{75,70,85},{70,75,80}}; 
+		int[][] result = new int[6][4];
 		
+		for(int i=0; i<score.length;i++) { // i는0부터 score길이만큼 1씩 증가하면서 반복한다
+			for(int j=0; j<score[i].length;j++) { // j는 0부터 score[i]인덱스의 길이만큼 1식 증가하면서
+				result[i][j] = score[i][j]; // result[i][j] 인덱스 에 score[i][j] 인덱스 값을 대입하고
+				result[i][3] += score[i][j]; // result [i][3] 인덱스에 score[i][j]인덱스 값더한다
+				result[5][j] += score[i][j]; // result[5][j] 인덱스에 score[i][j] 
+			}
+			result[5][3] += result[i][3];
+		}
+		
+		for(int i=0; i<result.length;i++) {
+			for(int j=0; j<result[i].length; j++) {
+				System.out.print(result[i][j] + "\t");
+			}System.out.println();
+		}
 		/*3. 2차원 배열을 이용하여 모래시계 출력하기		
 		 [결과]		
 		 길이를 홀수로 입력하세요		
