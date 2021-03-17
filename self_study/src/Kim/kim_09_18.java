@@ -5,38 +5,38 @@ public class kim_09_18 {
 	public static void main(String[] args) {
 		/*1.  1부터 9까지의 숫자 중 중복되지 않는 숫자 3개를 선택하고, 정렬하여 출력하기.*/	
 		
-		int[] arr = {1,2,3,4,5,6,7,8,9};
-		// 1~9 입력 배열 생성
-		
-		int[] arr2= new int[3];
-		// 길이 3의 배열생성
-		
-		int temp;
-		// 변수 temp선언
-		
-		for(int i=0; i<5;i++) { // i는 0부터 1000까지 1씩 증가하면서 반복한다
-			int a = (int)(Math.random()*9); // 변수 a에 정수 9개를 랜덤으로 저장한다
-		    int b = (int)(Math.random()*3); // 변수 b에 정수 3개를 랜덤으로 저장한다
-		    temp = arr[a]; //  arr배열의 a자리에 있는값을 temp 변수에  할당한다
-		    arr[a] = arr[b]; // arr배열 b에 arr배열의 b자리에 있는 값을 할당한다
-		    arr[b] = temp;	// arr배열 b자리에 있는 값을 temp변수에 할당한다
-		}
-		for(int i=0; i<arr2.length;i++) { // i는 0부터 arr2배열의 길이만큼 1씩증가하면서 반복한다
-			arr2[i] = arr[i]; // arr2배열의 i자리에 있는 값을 arr배열 i자리에 할당한다
-		}
-		for(int i=0; i<arr2.length; i++) { // i는 0부터  arr2배열의 길이만큼 1씩증가하면서 반복한다
-			for(int j=i;j<arr2.length;j++) { // j는 i부터 arr2배열의 길이만큼 1씩증가하면서 반복한다
-				if(arr2[i] > arr2[j]) { // 만약에 arr2배열의 i자리의 값이  arr2배열의 j자리의 값보다 크다면
-					temp = arr2[i];  // arr2배열의 i자리의 값을 temp변수에 할당하고
-					arr2[i] = arr2[j]; // arr2배열의 j자리의 값을 arr2배열의 i자리에 할당한다
-					arr2[j] = temp; // temp변수의 값을 arr2배열으 j자리에 할당한다
-				}
-			}
-		}
-		
-		for(int i=0; i<arr2.length; i++) { // i는 0부터 arr2배열의 길이만큼 1씩 증가하면서 반복한다
-			System.out.print(arr2[i] + " "); // arr2배열의 i에 있는 값을 출력한다
-		}
+//		int[] arr = {1,2,3,4,5,6,7,8,9};
+//		// 1~9 입력 배열 생성
+//		
+//		int[] arr2= new int[3];
+//		// 길이 3의 배열생성
+//		
+//		int temp;
+//		// 변수 temp선언
+//		
+//		for(int i=0; i<5;i++) { // i는 0부터 1000까지 1씩 증가하면서 반복한다
+//			int a = (int)(Math.random()*9); // 변수 a에 정수 9개를 랜덤으로 저장한다
+//		    int b = (int)(Math.random()*3); // 변수 b에 정수 3개를 랜덤으로 저장한다
+//		    temp = arr[a]; //  arr배열의 a자리에 있는값을 temp 변수에  할당한다
+//		    arr[a] = arr[b]; // arr배열 b에 arr배열의 b자리에 있는 값을 할당한다
+//		    arr[b] = temp;	// arr배열 b자리에 있는 값을 temp변수에 할당한다
+//		}
+//		for(int i=0; i<arr2.length;i++) { // i는 0부터 arr2배열의 길이만큼 1씩증가하면서 반복한다
+//			arr2[i] = arr[i]; // arr2배열의 i자리에 있는 값을 arr배열 i자리에 할당한다
+//		}
+//		for(int i=0; i<arr2.length; i++) { // i는 0부터  arr2배열의 길이만큼 1씩증가하면서 반복한다
+//			for(int j=i;j<arr2.length;j++) { // j는 i부터 arr2배열의 길이만큼 1씩증가하면서 반복한다
+//				if(arr2[i] > arr2[j]) { // 만약에 arr2배열의 i자리의 값이  arr2배열의 j자리의 값보다 크다면
+//					temp = arr2[i];  // arr2배열의 i자리의 값을 temp변수에 할당하고
+//					arr2[i] = arr2[j]; // arr2배열의 j자리의 값을 arr2배열의 i자리에 할당한다
+//					arr2[j] = temp; // temp변수의 값을 arr2배열으 j자리에 할당한다
+//				}
+//			}
+//		}
+//		
+//		for(int i=0; i<arr2.length; i++) { // i는 0부터 arr2배열의 길이만큼 1씩 증가하면서 반복한다
+//			System.out.print(arr2[i] + " "); // arr2배열의 i에 있는 값을 출력한다
+//		}
 		
 		/*2.  int[][] score = {{90,80,70},{95,85,75},{70,80,75},{75,70,85},{70,75,80}}; 
 		 score 배열보다 가로 세로가 1씩 더큰 배열 result 배열 생성하기.		
@@ -50,6 +50,7 @@ public class kim_09_18 {
 		70   75  80    225		
 		400 390 385 1175		
 		*/		
+		int[][] score = {{90,80,70},{95,85,75},{70,80,75},{75,70,85},{70,75,80}}; 
 		
 		/*3. 2차원 배열을 이용하여 모래시계 출력하기		
 		 [결과]		

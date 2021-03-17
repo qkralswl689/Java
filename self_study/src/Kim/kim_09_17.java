@@ -26,24 +26,26 @@ public class kim_09_17 {
 		6*8=48 7*8=56 8*8=64 9*8=72 		
 		6*9=54 7*9=63 8*9=72 9*9=81
 		 */		
-
-//		for(int i=2; i<6;i++) {
-//			System.out.print(i + "단        ");
-//			// System.out.print(i + "단\t"); => 간단하게 공백 넣을수 있다
-//		}System.out.println();
-//		for(int i=2;i<=9;i++) {
-//			for(int j=2;j<=5;j++) {
-//				System.out.printf("%d*%d=%d ",j,i,j*i);
-//			}System.out.println();
-//		}
-//		for(int i=6; i<=9;i++) {
-//			System.out.print(i + "단       ");
-//		}System.out.println();
-//		for(int i=2;i<=9;i++) {
-//			for(int j=6;j<=9;j++) {
-//				System.out.printf("%d*%d=%d ",j,i,j*i);
-//			}System.out.println();
-//		}
+		System.out.println("1번문제 답 : ");
+		
+		for(int i=2; i<6;i++) { // i는 2부터 6까지 1씩 증가하면서
+			System.out.print(i + "단        "); // 단을 출력한다
+			// System.out.print(i + "단\t"); => 간단하게 공백 넣을수 있다
+		}System.out.println();
+		
+		for(int i=2;i<=9;i++) { // i는 2부터 9까지 1씩증가하면서 반복하고 => 곱해주는 수 
+			for(int j=2;j<=5;j++) { // j는 2부터 5까지 1씩증가하면서
+				System.out.printf("%d*%d=%d ",j,i,j*i); // 해당 식을 출력한다 => 2~5단 출력
+			}System.out.println();
+		}
+		for(int i=6; i<=9;i++) { // i는 6부터 9까지 1씩증가하면서 반복하면서
+			System.out.print(i + "단       "); // 단을 출력한다
+		}System.out.println();
+		for(int i=2;i<=9;i++) { // i는 2부터 9까지 1씩증가하면서 반복하고
+			for(int j=6;j<=9;j++) { // j는 6부터 9까지 1씩증가하면서  => 6~9단 출력
+				System.out.printf("%d*%d=%d ",j,i,j*i); // 해당 식을 출력한다
+			}System.out.println();
+		}
 		
 		/*2. 방정식 2x+4y=10의 모든 해를 구하는 프로그램을 작성하시오.		
 		단 x와 y는 정수이고 각각의 범위는 0<=x<=10, 0<=y<=10임 	
@@ -52,38 +54,41 @@ public class kim_09_17 {
 		x=1,y=2		
 		x=3,y=1		
 		x=5,y=0*/	
-
-//		for(int x=0; x<=10;x++) {
-//			for(int y=0; y<=10;y++) {
-//				if(2*x + 4*y == 10) {
-//					System.out.printf("x = %d, y = %d %n",x,y);
-//				}
-//			}
-//		}
+		System.out.print("2번문제 : ");
+		for(int x=0; x<=10;x++) { // x는 0부터 10까지 1씩증가하면서 반복하고
+			for(int y=0; y<=10;y++) { // y는 0부터 10까지 1씩증가하면서 반복하고
+				if(2*x + 4*y == 10) { // 2*x + 4*y 의 값이 10이라면
+					System.out.printf("x = %d, y = %d %n",x,y); // 해당식을 출력한다
+				}
+			}
+		}
 
 			
 		/*
 		  3. (1) + (1+2) + (1+2+3)+... (1+2+3+...10)=220 출력하기
 		*/
-		int sum=0;
-		for(int i=1; i<=10;i++) {
-			System.out.print("(");
-			for(int j=1; j<=i;j++) {
-				if(j==1) {
-					System.out.print(j);
-				}else {
-					System.out.print("+"+j);
-				} sum +=i;
-				if(i==10) {
-					System.out.print("="+sum);
+		System.out.print("3번문제 : ");
+		
+		int sum =0; // sum변수 선언후 0으로 값 초기화
+		for(int i=1;i<=10;i++) { // i는 1부터 10까지 1씩증가하면서 반복하면서
+			System.out.print("("); // (를 출력한다
+			for(int j=1;j<=i;j++) { // j는 1부터 i의 값까지 1씩증가하면서 반복하고
+				if(j == 1) { // j의 값이 1이라면
+					System.out.print(j); // j의 값을 출력하고
+				}else { // 아니면
+					System.out.print("+"+j); // + j의값을 출력한다
 				}
+					sum+=j; // 변수 sum에 j의 값을 더해준다
+			}
+			if(i==10) { // i의 값의 10이라면
+				
+				System.out.println(")" + sum); // ) 변수 sum값을 출력하고
+			}else { // 아니라면
+				
+				System.out.print(")+"); // )+를 출력한다
 			}
 		}
 
-		
-		
-	
-		
 		/* 4. 화면에 삼각형 높이를 입력받고, 높이에 맞는 *로 삼각형 출력하기	
 		[결과]		
 		삼각형의 높이를 입력하세요		
@@ -91,33 +96,34 @@ public class kim_09_17 {
 		  *		
 		 **		
 		*** 	*/	
+		System.out.print("4번문제 : ");
 		
-		Scanner sc = new Scanner(System.in);
-		
-//		int n = sc.nextInt();
-//		for(int i=0; i<=n;i++) {
-//			for(int j=n;j>i;j--) {
-//				System.out.print(" ");
-//			}for(int j=0;j<i;j++) {
-//				System.out.print("*");
-//			}System.out.println();
-//		}
+		Scanner sc = new Scanner(System.in); // 입력받을 Scanner객체 생성
+		 
+		int n = sc.nextInt(); // 변수 n에 입력받은 값을 저장한다
+		for(int i=0; i<=n;i++) { // i는 0부터 입력받은값n까지 1씩증가하면서 반복하고
+			for(int j=n;j>i;j--) { // j는 입력받은값n부터 i값보다 클때까지 1씩감소하면서 
+				System.out.print(" "); // 공백을 출력한다
+			}for(int j=0;j<i;j++) { // j는 0부터 i값까지 1씩증가하면서 
+				System.out.print("*"); // *를 출력한다
+			}System.out.println();
+		}
 		/* 5.화면에 삼각형 높이를 입력받고, 높이에 맞는 *로 삼각형 출력하기 		
 		삼각형의 높이를 입력하세요		
 		3	
 		  * 		
 		 *** 		
 		*****  */
-//		
-//		int n = sc.nextInt();
-//		
-//		for(int i=1;i<=n;i++) {
-//			for(int j=n;j>i;j--) {
-//				System.out.print(" ");
-//			}for(int j=1;j<i*2;j++) {
-//				System.out.print("*");
-//			}System.out.println();
-//		}
+		System.out.print("5번문제 : ");
+		int o = sc.nextInt(); // 변수 o에 입력받은 값을 저장한다
+		
+		for(int i=1;i<=o;i++) { // i는 1부터 입력받은값o 까지1씩증가하면서 반복하고
+			for(int j=o;j>i;j--) { // j는 입력받은값o부터 i값보다 큰값일 때 까지 1씩감소하면서 
+				System.out.print(" "); // 공백을 출력한다
+			}for(int j=1;j<i*2;j++) { // j는 1부터 i*2값 까지 1씩증가하면서 
+				System.out.print("*"); // *을 출력한다
+			}System.out.println();
+		}
 	
 
 		/*6. 화면에 삼각형 높이를 입력받고, 높이에 맞는 *로 삼각형 출력하기 		
@@ -128,26 +134,24 @@ public class kim_09_17 {
 		  *		
 		 ***		
 		*****  ​*/
+		System.out.print("6번문제 : ");
+		int m = sc.nextInt(); // 변수 m에 입력받은 값을 저장한다
 		
-		int n = sc.nextInt();
-		
-		for(int i=0; i<n/2;i++) {
-			for(int j=0;j<i;j++) {
-				System.out.print(" ");				
+		for(int i=0; i<m/2;i++) { // i는0부터 입력받은값m/2 값 까지 1씩증가하면서 반복하고
+			for(int j=0;j<i;j++) { // j는 0부터 i값보다 작은값 일 때까지 1씩증가하면서
+				System.out.print(" "); // 공백을 출력한다
 				
-			}for(int j=n;j>i*2; j--) {
-				System.out.print("*");
+			}for(int j=m;j>i*2; j--) { // j는 입력받은값m부터 i*2값보다 큰값일 때 까지 1씩감소하면서
+				System.out.print("*"); // *을 출력한다
 			}System.out.println();	
 		
-		}for (int i=0;i<=n/2;i++) {
-			for(int j=n/2; j>i;j--) {
-				System.out.print(" ");
+		}for (int i=0;i<=m/2;i++) { // i는0부터 입력받은값m/2 값 까지 1씩증가하면서 반복하고
+			for(int j=m/2; j>i;j--) { // j는 입력받은값m/2 값부터 i값보다 큰값일 때 까지 1씩감소하면서
+				System.out.print(" "); // 공백을 출력한다
 			
-			}for(int j=0;j<=i*2;j++) {
-				System.out.print("*");
+			}for(int j=0;j<=i*2;j++) { // j는 0부터 i*2값보다 작거나 같은값 일 때까지 1씩증가하면서
+				System.out.print("*"); // *을 출력한다 
 			}System.out.println();
 		  }
-		
-
 	}
 }

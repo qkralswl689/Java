@@ -14,6 +14,7 @@ import java.util.List;
 import com.javateam.jdbc.member.dao.MemberDao;
 import com.javateam.jdbc.member.domain.MemberVo;
 import com.javateam.jdbc.member.util.DbUtil;
+import com.javateam.jdbc.member.util.ExceptionMetadata;
 
 /**
  * MemberDao의 구현 클래스(concrete class)<br><br>
@@ -52,9 +53,13 @@ public class MemberDaoImpl implements MemberDao {
 		boolean result = false; // 결과값 초기화
 		
 		// 실행 메서드명(reflection 사용)
-		String methodName 
-		= new Exception().getStackTrace()[0].getMethodName();
+		// 트랜잭션 / 예외처리 객체 생성
+		ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
+//		String methodName 
+//		= new Exception().getStackTrace()[0].getMethodName();
 		
+		
+		 
 		// DB 연결
 		Connection con = DbUtil.connect();
 		
@@ -70,6 +75,9 @@ public class MemberDaoImpl implements MemberDao {
 		
 		// SQL, 인자 (선)처리
 		try {
+			// 트랜잭션 처리에 따른 수둥 커밋(commit)모드 설정
+			con.setAutoCommit(false);
+			
 			pstmt = con.prepareStatement(sql); // 1) SQL(prepare) 선처리
 			// pstmt = con.createStatment(); // 2) SQL 후처리
 			pstmt.setString(1, member.getMemberId());
@@ -95,11 +103,16 @@ public class MemberDaoImpl implements MemberDao {
 				System.out.println("회원정보 저장에 실패하였습니다.");
 				// result = false;
 			}
+			// 트랜잭션(transaction) 승인 명령(commit)
+			con.commit();
+			
 		} catch (SQLException e) {
-			System.err.println(methodName + " : " + " 회원정보 저장시 예외가 발생하였습니다.");
-			System.err.println(methodName + " : " + e.getMessage());
-			// System.err.println(methodName + " : " + "회원정보 저장시 예외가 발생하였습니다.");
-			e.printStackTrace();
+//			System.err.println(methodName + " : " + " 회원정보 저장시 예외가 발생하였습니다.");
+//			System.err.println(methodName + " : " + e.getMessage());
+//			// System.err.println(methodName + " : " + "회원정보 저장시 예외가 발생하였습니다.");
+//			e.printStackTrace();
+			emd.printErr(e, con, true);
+			
 		} finally {
 			// 자원 반납
 			DbUtil.close(con, pstmt, null);
@@ -118,9 +131,10 @@ public class MemberDaoImpl implements MemberDao {
 		// 개별 회원정보 객체 선언
 		MemberVo member = null;
 		
-		// 실행 메서드명  
-		String methodName = new Exception().getStackTrace()[0].getMethodName();
-		
+		// 실행 메서드명  	
+		// 트랜잭션 / 예외처리 객체 생성
+		//String methodName = new Exception().getStackTrace()[0].getMethodName();
+		ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
 		// DB 연결
 		Connection con = DbUtil.connect();
 		
@@ -169,7 +183,8 @@ public class MemberDaoImpl implements MemberDao {
 			}
 			// SQL 실행, 예외처리
 		}catch(SQLException e) {
-			System.out.println(methodName + " : " + e.getMessage());
+			//System.out.println(methodName + " : " + e.getMessage());
+			emd.printErr(e, con, false);
 			
 		} finally {
 			// 자원 반납
@@ -185,8 +200,8 @@ public class MemberDaoImpl implements MemberDao {
 		 MemberVo member = new MemberVo();
 		 
 		// 실행 메서드명  
-		 String methodName = new Exception().getStackTrace()[0].getMethodName();
-		 
+		//String methodName = new Exception().getStackTrace()[0].getMethodName();
+		 ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
 		// DB 연결
 		Connection con = DbUtil.connect();
 		
@@ -225,8 +240,8 @@ public class MemberDaoImpl implements MemberDao {
 			}
 			
 		}catch(SQLException e) {
-			System.out.println(methodName + " : " + e.getMessage());
-			
+			// System.out.println(methodName + " : " + e.getMessage());
+			emd.printErr(e, con, false);
 		}finally {
 			// 자원 반납
 			DbUtil.close(con, pstmt, rs);
@@ -242,8 +257,8 @@ public class MemberDaoImpl implements MemberDao {
 		boolean result = false;
 		
 		// 실행 메서드명
-		String methodName = new Exception().getStackTrace()[0].getMethodName();
-		
+		//String methodName = new Exception().getStackTrace()[0].getMethodName();
+		ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
 		// DB연결
 		Connection con = DbUtil.connect();
 		
@@ -271,6 +286,8 @@ public class MemberDaoImpl implements MemberDao {
 		// SQL, 인자(선) 처리
 		
 		try {
+			// 트랜잭션 처리에 따른 수둥 커밋(commit)모드 설정
+			con.setAutoCommit(false);
 			// 1) pstmt = con.prepareStatement(sql);
 			
 			// 2) sql.toString : StringBulder를 변환해서 사용
@@ -290,11 +307,12 @@ public class MemberDaoImpl implements MemberDao {
 			}else {
 				System.out.println("회원정보 수정에 실패하였습니다.");
 			}
-				
+			con.commit();
 		} catch (SQLException e) {
-			System.err.println(methodName + ": " +"회원정보 저장시 예외가 발생하였습니다.");
-			System.err.println(methodName + " : " + e.getMessage());
-			e.printStackTrace();
+//			System.err.println(methodName + ": " +"회원정보 저장시 예외가 발생하였습니다.");
+//			System.err.println(methodName + " : " + e.getMessage());
+//			e.printStackTrace();
+			emd.printErr(e, con, true);
 		}finally {
 			// 자원 반납
 			DbUtil.close(con, pstmt, null);
@@ -310,8 +328,8 @@ public class MemberDaoImpl implements MemberDao {
 		
 		// 실행 메서드명  
 		// getStackTrace()[0] : 배열의 0번째 요소
-		String MethodName = new Exception().getStackTrace()[0].getMethodName();
-		
+		//String MethodName = new Exception().getStackTrace()[0].getMethodName();
+		ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
 		// DB 연결
 		Connection con = DbUtil.connect();
 		
@@ -323,6 +341,9 @@ public class MemberDaoImpl implements MemberDao {
 		
 		// SQL, 인자 (선)처리
 		try {
+			// 트랜잭션 처리에 따른 수둥 커밋(commit)모드 설정
+			con.setAutoCommit(false);
+			
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setString(1, memberId);
@@ -333,12 +354,13 @@ public class MemberDaoImpl implements MemberDao {
 				System.out.println("회원정보 삭제에 실패하였습니다");
 				// result = false;
 			}
+			con.commit();
 		
 			// SQL 실행, 예외처리
 		}catch(SQLException e) {
-			System.out.println(MethodName + " : " + "회원정보 삭제시 예외 발생");
-			System.out.println(MethodName + " : " + e.getMessage());
-			
+//			System.out.println(MethodName + " : " + "회원정보 삭제시 예외 발생");
+//			System.out.println(MethodName + " : " + e.getMessage());
+			emd.printErr(e, con, true);
 		} finally {
 			// 자원 반납
 			DbUtil.close(con, pstmt, null);
@@ -354,8 +376,8 @@ public class MemberDaoImpl implements MemberDao {
 		boolean result = false;
 		
 		// 실행 메서드명
-		String methodName = new Exception().getStackTrace()[0].getMethodName();
-		
+		//String methodName = new Exception().getStackTrace()[0].getMethodName();
+		ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
 		// DB 연결
 		Connection con = DbUtil.connect();
 		
@@ -387,8 +409,8 @@ public class MemberDaoImpl implements MemberDao {
 			}				
 			
 		} catch (SQLException e) {
-			System.out.println(methodName + " : " + e.getMessage());
-		
+			//System.out.println(methodName + " : " + e.getMessage());
+		emd.printErr(e, con, false);
 			// 자원반납
 		}finally {
 			DbUtil.close(con, pstmt, rs);
@@ -405,8 +427,8 @@ public class MemberDaoImpl implements MemberDao {
 		 String result = "";
 		 
 		// 실행 메서드명  
-		String methodName = new Exception().getStackTrace()[0].getMethodName();
-		
+		//String methodName = new Exception().getStackTrace()[0].getMethodName();
+		 ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
 		// DB 연결
 		Connection con = DbUtil.connect();
 		
@@ -467,7 +489,8 @@ public class MemberDaoImpl implements MemberDao {
 			
 		} catch (SQLException e) {
 			
-			System.out.println(methodName + " : " + e.getMessage());
+			//System.out.println(methodName + " : " + e.getMessage());
+			emd.printErr(e, con, false);
 			
 			// 자원 반납
 		}finally {
@@ -489,8 +512,8 @@ public class MemberDaoImpl implements MemberDao {
 		MemberVo member = null;
 		
 		// 실행 메서드명  
-		String methodName = new Exception().getStackTrace()[0].getMethodName();
-		
+		//String methodName = new Exception().getStackTrace()[0].getMethodName();
+		ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
 		// DB 연결
 		Connection con = DbUtil.connect();
 		
@@ -564,8 +587,8 @@ public class MemberDaoImpl implements MemberDao {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println(methodName + " : " + e.getMessage());
-			
+			//System.out.println(methodName + " : " + e.getMessage());
+			emd.printErr(e, con, false);
 			// 자원 반납
 		}finally {
 			DbUtil.close(con, pstmt, rs);
@@ -581,8 +604,8 @@ public class MemberDaoImpl implements MemberDao {
 		 boolean result = false;
 		 
 		// 실행 메서드명  
-		String methodName = new Exception().getStackTrace()[0].getMethodName();
-		
+		//String methodName = new Exception().getStackTrace()[0].getMethodName();
+		 ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
 		// DB 연결
 		Connection con = DbUtil.connect();
 		
@@ -633,7 +656,8 @@ public class MemberDaoImpl implements MemberDao {
 			
 		} catch (SQLException e) {
 			
-			System.out.println(methodName + " : " + e.getMessage());
+			//System.out.println(methodName + " : " + e.getMessage());
+			emd.printErr(e, con, false);
 			// 자원 반납
 		}finally {
 			DbUtil.close(con, pstmt, rs);
@@ -649,8 +673,8 @@ public class MemberDaoImpl implements MemberDao {
 		boolean result = false;
 		 
 		// 실행 메서드명  
-		String methodName = new Exception().getStackTrace()[0].getMethodName();
-
+		//String methodName = new Exception().getStackTrace()[0].getMethodName();
+		ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
 		// DB 연결
 		Connection con = DbUtil.connect();
 
@@ -687,11 +711,109 @@ public class MemberDaoImpl implements MemberDao {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println(methodName + " : " + e.getMessage());
+			//System.out.println(methodName + " : " + e.getMessage());
+			emd.printErr(e, con, false);
 			// 자원 반납
 		}finally {
 			DbUtil.close(con, pstmt, rs);
 			
+		}
+
+		// 리턴(반환)
+		return result;
+	}
+
+	@Override
+	public boolean isEnablePhone(String memberPhone) {
+		// 리턴(반환값) 처리
+		 boolean result = false;
+		// 실행 메서드명  
+		 ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
+		 
+		// DB 연결
+		 Connection con = DbUtil.connect();
+		 
+		// SQL 처리 객체
+		 PreparedStatement pstmt = null;
+		 
+		// 결과셋 객체 (DOL : select)
+		 ResultSet rs = null;
+
+		// SQL 구문
+		 String sql = "SELECT count(*) FROM member "
+		 		+ "WHERE member_phone = ? ";
+
+		// SQL, 인자 (선)처리
+		 try {
+			// SQL 결과셋 객체 생성 			 
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, memberPhone);
+			
+			rs = pstmt.executeQuery();
+			// SQL 실행, 예외처리
+			
+			if(rs.next()) {
+				result = rs.getInt(1) == 1 ? false:true ;
+			}
+
+		} catch (SQLException e) {
+			emd.printErr(e, con, false);
+			
+		// 자원 반납
+		} finally {
+			DbUtil.close(con, pstmt, rs);
+			
+		}
+		// 리턴(반환)
+		return result;
+	}
+
+	@Override
+	public boolean isEnablePhone(String memberId, String memberPhone) {
+		// 리턴(반환값) 처리
+		 boolean result = false;
+		 
+		// 실행 메서드명  
+		  ExceptionMetadata emd = new ExceptionMetadata(new Exception().getStackTrace()[0]);
+
+		// DB 연결
+		  Connection con = DbUtil.connect();
+
+		// SQL 처리 객체
+		  PreparedStatement pstmt = null;
+
+		// 결과셋 객체 (DOL : select)
+		  ResultSet rs = null;
+
+		// SQL 구문
+		  String sql = "SELECT count(*) FROM member " + 
+		  		"WHERE member_id != ? AND member_phone = ? ";
+
+		// SQL, 인자 (선)처리
+		  
+		  try {
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1,memberId);
+			pstmt.setString(2,memberPhone);
+			
+			// SQL 결과셋 객체 생성
+			rs = pstmt.executeQuery();
+			
+	
+			if(rs.next()) {
+				result = rs.getInt(1)==0 ?true : false;
+			}else {
+				result = false;
+			}
+			// SQL 실행, 예외처리
+		} catch (SQLException e) {
+			emd.printErr(e, con, false);
+			
+			// 자원 반납
+		}finally {
+			DbUtil.close(con, pstmt, rs);
 		}
 
 		// 리턴(반환)

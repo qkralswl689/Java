@@ -104,8 +104,31 @@ public interface MemberDao {
 	 * : 사용 가능한 이메일 여부 점검<br><br>
 	 * : ex) 회원 정보 "수정(갱신)"시  이메일 중복 점검 <br>
 	 * : 이메일 용도 &rarr; 이이디/비밀번호 분실시 검색 활용<br><br>
+	 * @param memberId 회원 아이디
 	 * @param memberEmail 이메일
 	 * @return 가용 이메일 여부
 	 */
 	public boolean isEnableEmail(String memberId,String memberEmail);
+	
+	/**
+	 * 연락처(전화번호) 중복점검<br><br>
+	 * : 사용 가능한 연락처(전화번호) 여부 점검<br><br>
+	 * : ex) 회원가입시 연락처(전화번호) 중복 점검<br>
+	 * : 연락처(전화번호) 용도 &rarr; 아이디/비밀번호 분실시 검색 활용<br><br>
+	 * @param memberPhone 회원 연락처(전화번호)
+	 * @return 가용 연락처(전화번호) 여부
+	 */
+	public boolean isEnablePhone(String memberPhone);
+	
+	/**
+	 * 연락처(전화번호) 중복 점검<br><br>
+	 * : 사용 가능한 연락처(전화번호) 여부 점검<br><br>
+	 * : ex) 회원가입시 연락처(전화번호) 중복 점검<br> 
+	 * : 연락처(전화번호) 용도 &rarr; 아이디/비밀번호 분실시 검색 활용<br><br>  
+	 * 
+	 * @param memberId 회원 아이디
+	 * @param memberPhone 회원 연락처(전화번호)
+	 * @return 가용 연락처(전화번호) 여부
+	 */
+	public boolean isEnablePhone(String memberId, String memberPhone);
 }

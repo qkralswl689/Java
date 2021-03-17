@@ -23,7 +23,7 @@ public class InsertMemberTest {
 		// 생성할 회원정보 생성 (MemberVO)
 		MemberVo member = new MemberVo();
 		
-		member.setMemberId("java5555");
+		member.setMemberId("java555");
 		member.setMemberPassword("1234");
 		member.setMemberNicname("구디샘");
 		member.setMemberName("홍길동");
