@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="중복"/>
+		<item key="selection" value="Paging"/>
 		<list key="findhistory">
+			<item value="paging"/>
 			<item value="중복"/>
 			<item value=" getMe"/>
 			<item value="%n"/>
@@ -22,7 +23,6 @@
 			<item value="upd"/>
 			<item value="대기"/>
 			<item value="utf-8"/>
-			<item value="data"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

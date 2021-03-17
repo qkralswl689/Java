@@ -63,6 +63,9 @@ public interface MemberDAO {
 	 * @return 가용 이메일 여부
 	 */
 	public boolean isEnableEmail(String memberEmail);
+	
+	public List<MemberVO> getMembersBySearching(String searchKey, String searchValue, boolean isEquivalentSearch,
+			String sortDirection, int page, int limit);
 }
 
 

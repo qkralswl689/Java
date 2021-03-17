@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 // MemberDAO 구현클래스
 public class MemberDAOImpl implements MemberDAO {
 	
@@ -278,6 +279,123 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public boolean isEnableEmail(String memberEmail) {
 		return false;
+	}
+
+	// 논리적 검색어를 물리 필드명으로 변환
+	// ex ) 이름 => member_name
+	private String getFieldBySearchWord(String searchWord) {
+		String result = "";
+		
+		searchWord = searchWord.trim(); //검색어 공백 제거
+		result = searchWord.contentEquals("이름") ? "member_name" :
+				 searchWord.contentEquals("별명") ? "member_nickname" :
+				 searchWord.contentEquals("아이디") ? "member_id":
+				 searchWord.contentEquals("성별") ? "member_gender":
+				 searchWord.contentEquals("이메일") ? "member_email":
+				 searchWord.contentEquals("연락처") ? "member_phone" :
+				 searchWord.contentEquals("생일") ? "member_birth" :
+				 searchWord.contentEquals("기본주소") ? "member_address_basic":
+				 searchWord.contentEquals("상세주소") ? "member_address_detail" :
+				 searchWord.contentEquals("가입일") ? "member_joindate" :null;
+				
+		return result;
+		
+	}
+	
+	@Override
+	public List<MemberVO> getMembersBySearching(String searchKey, String searchValue, boolean isEquivalentSearch,
+			String sortDirection, int page, int limit) {
+		
+		// 리턴(반환값) 처리
+		List<MemberVO> members = new ArrayList<>();
+		
+		MemberVO member = null;
+		 
+		// 실행 메서드명  
+		
+		String methodName = new Exception().getStackTrace()[0].getMethodName();
+		
+		// DB 연결
+		Connection con = DBUtil.connect();
+		
+		// SQL 처리 객체
+		PreparedStatement pstmt = null;
+		
+		// 결과셋 객체
+		ResultSet rs = null;
+		
+		// SQL 구문
+		// Where절 변수
+		// 조건에 따라 동등/유사  검색 WHERE절(clause) 선택적 조정
+		try {
+			String searchField = this.getFieldBySearchWord(searchKey);
+			if(searchField == null) {
+				throw new SQLException("검색어에 해당되는 테이블 필드가 없습니다.");
+			}
+			// 동등 및 유사 검색일 경우를 구분하여 표현식 구성
+			// 1)
+			String whereClause = isEquivalentSearch == true ? searchField + " = " + searchValue + " " :
+															searchField + " like '%' || '" + searchValue + "' || '%' ";
+			
+			// 2) 
+			if(searchField.equals("member_birth")|| searchField.equals("member_joindate")) {
+				searchField = "TO_CHAR(" + searchField + ", 'YYYY-MM-DD') ";
+			}
+			
+			String sql = "SELECT * " + 
+					 "FROM (SELECT ROWNUM, " + 
+					 "             m.*, " + 
+					 "             FLOOR((ROWNUM - 1) / ? + 1) page " + 
+					 "      FROM (" + 
+					 "             SELECT * FROM STUDYJDBC " + 
+					 " 			   WHERE " + whereClause + " " +
+					 "             ORDER BY member_id " + sortDirection + " " +
+					 "           ) m " + 
+					 "      ) " + 
+					 "WHERE page = ?";
+			// SQL, 인자 (선)처리
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, limit);
+			pstmt.setInt(2, page);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				member = new MemberVO();
+				
+				member.setMemberId(rs.getString("member_Id"));
+ 				member.setMemberPassword(rs.getString("member_Password"));
+ 				member.setMemberNickname(rs.getString("member_Nickname"));
+ 				member.setMemberName(rs.getString("member_Name"));
+ 				member.setMemberGender(rs.getString("member_Gender").charAt(0)); // char로 변환
+ 				member.setMemberEmail(rs.getString("member_Email"));
+ 				member.setMemberPhone(rs.getString("member_Phone"));
+ 				member.setMemberBirth(rs.getDate("member_Birth"));
+ 				member.setMemberZip(rs.getString("member_Zip"));
+ 				member.setMemberAddressBasic(rs.getString("member_Address_Basic"));
+ 				member.setMemberAddressDetail(rs.getString("member_Address_Detail"));
+ 				member.setMemberJoindate(rs.getDate("member_JoinDate"));
+ 				
+ 				members.add(member);
+ 				
+			}
+			
+			// SQL 실행, 예외처리
+			
+			
+			
+		}catch(SQLException e) {
+			System.out.println(methodName + " : " + e.getMessage());
+			// 자원 반납
+		}finally {
+			DBUtil.cloese(con, pstmt, rs);
+		}
+		
+		
+		
+		// 리턴(반환)
+		return members;
 	}
 
 	
