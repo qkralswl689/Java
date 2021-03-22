@@ -29,6 +29,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\git_ming\JSP\JSP\bookstudy"/>
+			<item value="D:\git_ming\JSP\JSP\submitSample"/>
 			<item value="D:\git_ming\JSP\JSP\jsp_20210322_1"/>
 			<item value="D:\git_ming\JSP\JSP\jse_20210319_2"/>
 			<item value="D:\git_ming\JSP\JSP\jsp_20210319_2"/>
