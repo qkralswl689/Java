@@ -1,3 +1,4 @@
+AbstractTextEditor.Color.SelectionBackground=0,128,192
 eclipse.preferences.version=1
 fullcoverage_stylePreferences=NONE
 fullcoverage_text=false
