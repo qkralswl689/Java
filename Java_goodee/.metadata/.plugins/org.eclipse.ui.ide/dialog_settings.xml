@@ -29,6 +29,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\git_ming\JSP\JSP\JSP_model2_demo"/>
 			<item value="D:\git_ming\JSP\JSP\error_page"/>
 			<item value="D:\git_ming\JSP\JSP\jsp_20210323_1"/>
 			<item value="D:\git_ming\JSP\JSP\basic_object_ex"/>
