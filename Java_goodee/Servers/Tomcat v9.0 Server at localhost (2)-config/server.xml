@@ -155,7 +155,7 @@
 
       
       
-      <Context docBase="JSP_model2_demo" path="/JSP_model2_demo" reloadable="true" source="org.eclipse.jst.jee.server:JSP_model2_demo"/><Context docBase="error_page" path="/error_page" reloadable="true" source="org.eclipse.jst.jee.server:error_page"/><Context docBase="jstl_el_ex" path="/jstl_el_ex" reloadable="true" source="org.eclipse.jst.jee.server:jstl_el_ex"/></Host>
+      <Context docBase="JSP_model2_demo" path="/JSP_model2_demo" reloadable="true" source="org.eclipse.jst.jee.server:JSP_model2_demo"/><Context docBase="error_page" path="/error_page" reloadable="true" source="org.eclipse.jst.jee.server:error_page"/><Context docBase="jstl_el_ex" path="/jstl_el_ex" reloadable="true" source="org.eclipse.jst.jee.server:jstl_el_ex"/><Context docBase="TestEx" path="/TestEx" reloadable="true" source="org.eclipse.jst.jee.server:TestEx"/><Context docBase="severImplTest" path="/severImplTest" reloadable="true" source="org.eclipse.jst.jee.server:severImplTest"/></Host>
     </Engine>
   </Service>
 </Server>
