@@ -29,6 +29,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\git_ming\JSP\JSP\file_upload"/>
 			<item value="D:\git_ming\JSP\JSP\jsp_20210326"/>
 			<item value="C:\Users\82104\Downloads\mania953_605c3cfa504dd (1)"/>
 			<item value="D:\git_ming\Java\Java_goodee\mania953_605c3b88adb8d"/>
