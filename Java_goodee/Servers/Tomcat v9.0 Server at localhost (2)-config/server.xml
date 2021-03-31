@@ -155,7 +155,7 @@
 
       
       
-      <Context docBase="dbcp_test" path="/dbcp_test" reloadable="true" source="org.eclipse.jst.jee.server:dbcp_test"/><Context docBase="Chapter13" path="/Chapter13" reloadable="true" source="org.eclipse.jst.jee.server:Chapter13"/><Context docBase="jsp_20210330_join" path="/jsp_20210330_join" reloadable="true" source="org.eclipse.jst.jee.server:jsp_20210330_join"/><Context docBase="mail_sending" path="/mail_sending" reloadable="true" source="org.eclipse.jst.jee.server:mail_sending"/></Host>
+      <Context docBase="newlecture" path="/newlecture" reloadable="true" source="org.eclipse.jst.jee.server:newlecture"/></Host>
     </Engine>
   </Service>
 </Server>

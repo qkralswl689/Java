@@ -3,7 +3,7 @@
 	<section name="EditorSelectionDialog">
 		<item key="EditorSelectionDialog.STORE_ID_FILE_EXTENSION" value=".xml"/>
 		<item key="EditorSelectionDialog.STORE_ID_INTERNAL_EXTERNAL" value="false"/>
-		<item key="EditorSelectionDialog.STORE_ID_DESCR" value="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart"/>
+		<item key="EditorSelectionDialog.STORE_ID_DESCR" value="org.jkiss.dbeaver.ui.editors.xml.XMLEditor"/>
 	</section>
 	<section name="ImportExportAction">
 		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.jst.servlet.ui.internal.wizard.WebComponentImportWizard"/>
