@@ -155,7 +155,7 @@
 
       
       
-      <Context docBase="member_project" path="/member_project" reloadable="true" source="org.eclipse.jst.jee.server:member_project"/><Context docBase="DogShopping" path="/DogShopping" reloadable="true" source="org.eclipse.jst.jee.server:DogShopping"/></Host>
+      <Context docBase="newlecture" path="/newlecture" reloadable="true" source="org.eclipse.jst.jee.server:newlecture"/></Host>
     </Engine>
   </Service>
 </Server>
