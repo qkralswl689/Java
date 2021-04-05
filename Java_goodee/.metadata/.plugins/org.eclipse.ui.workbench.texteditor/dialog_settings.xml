@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="true"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="exp"/>
+		<item key="selection" value="fi"/>
 		<list key="findhistory">
+			<item value="filter"/>
 			<item value="exp"/>
 			<item value="Cookie"/>
 			<item value="page"/>
@@ -22,7 +23,6 @@
 			<item value="char"/>
 			<item value="memberZip"/>
 			<item value="getin"/>
-			<item value="getinstance"/>
 		</list>
 		<list key="replacehistory">
 			<item value="\&quot; "/>
