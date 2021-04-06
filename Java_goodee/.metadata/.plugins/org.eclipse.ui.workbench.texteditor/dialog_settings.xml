@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="true"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="fi"/>
+		<item key="selection" value="content"/>
 		<list key="findhistory">
+			<item value="content"/>
+			<item value="목록"/>
 			<item value="filter"/>
 			<item value="exp"/>
 			<item value="Cookie"/>
@@ -21,8 +23,6 @@
 			<item value="update"/>
 			<item value="zip"/>
 			<item value="char"/>
-			<item value="memberZip"/>
-			<item value="getin"/>
 		</list>
 		<list key="replacehistory">
 			<item value="\&quot; "/>
