@@ -155,7 +155,7 @@
 
       
       
-      <Context docBase="newecturProject" path="/" reloadable="true" source="org.eclipse.jst.jee.server:newecturProject"/><Context docBase="newlecture" path="/newlecture" reloadable="true" source="org.eclipse.jst.jee.server:newlecture"/></Host>
+      <Context docBase="newecturProject" path="/" reloadable="true" source="org.eclipse.jst.jee.server:newecturProject"/><Context docBase="newlecture" path="/newlecture" reloadable="true" source="org.eclipse.jst.jee.server:newlecture"/><Context docBase="member_project" path="/member_project" reloadable="true" source="org.eclipse.jst.jee.server:member_project"/></Host>
     </Engine>
   </Service>
 </Server>
