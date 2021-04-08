@@ -6,8 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="true"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Connection"/>
+		<item key="selection" value="count"/>
 		<list key="findhistory">
+			<item value="count"/>
+			<item value="lastnum"/>
+			<item value="&quot;p&quot;"/>
+			<item value="p"/>
+			<item value="lastNum"/>
 			<item value="connection"/>
 			<item value="sample"/>
 			<item value="connect"/>
@@ -18,11 +23,6 @@
 			<item value="content"/>
 			<item value="목록"/>
 			<item value="filter"/>
-			<item value="exp"/>
-			<item value="Cookie"/>
-			<item value="page"/>
-			<item value="calc3"/>
-			<item value="post"/>
 		</list>
 		<list key="replacehistory">
 			<item value="\&quot; "/>
@@ -34,7 +34,7 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="9"/>
-		<item key="DIALOG_Y_ORIGIN" value="324"/>
+		<item key="DIALOG_Y_ORIGIN" value="587"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕"/>
