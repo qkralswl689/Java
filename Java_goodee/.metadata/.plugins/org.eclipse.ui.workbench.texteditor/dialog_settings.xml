@@ -6,8 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="true"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="8"/>
+		<item key="selection" value="HIT"/>
 		<list key="findhistory">
+			<item value="hit"/>
+			<item value="REGDATE"/>
+			<item value="regdate"/>
+			<item value="작성일"/>
 			<item value="8"/>
 			<item value="["/>
 			<item value="제목"/>
@@ -19,10 +23,6 @@
 			<item value="notice"/>
 			<item value="count"/>
 			<item value="lastnum"/>
-			<item value="&quot;p&quot;"/>
-			<item value="p"/>
-			<item value="lastNum"/>
-			<item value="sample"/>
 		</list>
 		<list key="replacehistory">
 			<item value="\&quot; "/>
