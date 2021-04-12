@@ -29,6 +29,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\부트코스트\명함관리프로그램\cardmanager_미구현"/>
+			<item value="D:\git_ming\JSP\JSP\board_project"/>
 			<item value="D:\git_ming\Java\Java_goodee\goodee\UML_20210406_1"/>
 			<item value="D:\git_ming\JSP\JSP\newecturProject"/>
 			<item value="D:\git_ming\JSP\JSP\serverTestAnswer"/>
