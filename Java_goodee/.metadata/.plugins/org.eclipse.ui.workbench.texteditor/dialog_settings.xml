@@ -6,8 +6,14 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="true"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="다시쓰기"/>
+		<item key="selection" value="게시글 보기"/>
 		<list key="findhistory">
+			<item value="게시글 보기"/>
+			<item value="댓글 아이콘"/>
+			<item value="다이얼"/>
+			<item value="삭제 아이"/>
+			<item value="모달 창"/>
+			<item value="수신성공"/>
 			<item value="다시쓰기"/>
 			<item value="boardForm.boardName."/>
 			<item value="boardform.b"/>
@@ -17,12 +23,6 @@
 			<item value="rdad"/>
 			<item value="deletenotic"/>
 			<item value="deleteA"/>
-			<item value="delete"/>
-			<item value="제목"/>
-			<item value="REGDATE"/>
-			<item value="regdate"/>
-			<item value="작성일"/>
-			<item value="8"/>
 		</list>
 		<list key="replacehistory">
 			<item value="\&quot; "/>
@@ -35,9 +35,9 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="9"/>
 		<item key="DIALOG_Y_ORIGIN" value="585"/>
-		<item key="DIALOG_WIDTH" value="288"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕"/>
+		<item key="DIALOG_WIDTH" value="340"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="org.eclipse.jst.jsp.ui.internal.preferences.ui.JSPTemplatePreferencePage$JSPEditTemplateDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="9"/>
