@@ -9,7 +9,7 @@ public class study {
 
 	public static int func(int num) {
 		
-		if(num == 1) {
+		if(num == 1) { //무한루프 방지
 			return 1;
 		}
 		
